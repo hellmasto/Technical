@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB JIO Tier 2 – Complete Master Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b3e; --gold: #f5a623; --accent: #e63946;
+    --card: #162040; --text: #d6e0ff; --sub: #8fa4d8;
+    --green: #2ecc71; --border: #1e305c; --white: #fff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--navy); color: var(--text); min-height: 100vh; }
+
+  header {
+    background: linear-gradient(135deg, #0d1b3e, #1a2e5a);
+    border-bottom: 3px solid var(--gold);
+    padding: 13px 16px 9px; text-align: center;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  header h1 { font-family: 'Rajdhani',sans-serif; font-size: 1.4rem; color: var(--white); }
+  header h1 span { color: var(--gold); }
+  header p { font-size: 0.7rem; color: var(--sub); margin-top: 1px; }
+
+  .tabs {
+    display: flex; overflow-x: auto; gap: 5px;
+    padding: 9px 12px; background: #0b1630;
+    border-bottom: 1px solid var(--border); scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0; background: #1a2a50; border: 1.5px solid #2a3f70;
+    color: var(--sub); border-radius: 20px; padding: 6px 13px;
+    font-size: 0.74rem; font-weight: 700; font-family: 'Nunito',sans-serif;
+    cursor: pointer; white-space: nowrap; transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+  .section { display: none; padding: 12px 13px 90px; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+  .sec-title {
+    font-family: 'Rajdhani',sans-serif; font-size: 1.25rem; color: var(--gold);
+    margin-bottom: 13px; padding-bottom: 7px; border-bottom: 2px solid var(--border);
+  }
+
+  /* ACCORDION */
+  .topic-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 9px; overflow: hidden; }
+  .topic-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; cursor: pointer; transition: background 0.2s; }
+  .topic-header:hover { background: #1a2a50; }
+  .topic-header-left { display: flex; align-items: center; gap: 9px; }
+  .topic-num { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.67rem; border-radius: 50%; width: 22px; height: 22px; line-height: 22px; text-align: center; flex-shrink: 0; }
+  .topic-name { font-family: 'Rajdhani',sans-serif; font-size: 0.98rem; color: var(--gold); }
+  .arrow { color: var(--sub); font-size: 0.9rem; transition: transform 0.3s; }
+  .arrow.open { transform: rotate(180deg); }
+  .topic-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--border); }
+  .topic-body.open { display: block; }
+
+  /* CONTENT */
+  .cb { margin-top: 11px; }
+  .cb h4 { font-family: 'Rajdhani',sans-serif; font-size: 0.95rem; color: var(--white); margin-bottom: 5px; margin-top: 11px; padding-left: 8px; border-left: 3px solid var(--gold); }
+  .cb p { font-size: 0.81rem; line-height: 1.62; color: #b8c8f0; margin-bottom: 5px; }
+  .cb ul { padding-left: 16px; margin-bottom: 5px; }
+  .cb ul li { font-size: 0.81rem; line-height: 1.65; color: #b8c8f0; margin-bottom: 3px; }
+  .cb ul li strong { color: var(--gold); }
+  .cb ul li code { background: #0d2040; padding: 1px 5px; border-radius: 4px; font-size: 0.78rem; color: #7dd3fc; }
+
+  /* TABLE */
+  .tbl { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.78rem; }
+  .tbl th { background: #1a2a50; color: var(--gold); padding: 7px 9px; text-align: left; font-family: 'Rajdhani',sans-serif; font-size: 0.85rem; }
+  .tbl td { padding: 7px 9px; border-bottom: 1px solid #1e305c; color: #b8c8f0; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl code { background: #0d2040; padding: 1px 5px; border-radius: 4px; color: #7dd3fc; }
+
+  /* CMD BOX */
+  .cmd-box { background: #060f20; border: 1px solid #2a3f70; border-radius: 8px; padding: 10px 12px; margin: 8px 0; font-family: monospace; font-size: 0.78rem; color: #7dd3fc; line-height: 1.8; overflow-x: auto; }
+  .cmd-box .prompt { color: #f5a623; }
+  .cmd-box .comment { color: #4a6090; }
+  .cmd-box .output { color: #8fa4d8; }
+
+  /* KEY POINT */
+  .kp { background: #0d2040; border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 8px; padding: 9px 11px; margin-top: 9px; font-size: 0.79rem; color: #b8c8f0; line-height: 1.58; }
+  .kp strong { color: var(--green); }
+  .warn { border-left-color: var(--accent); }
+  .warn strong { color: var(--accent); }
+
+  /* TAGS */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+  .tag { background: #1a2a50; border: 1px solid #2a3f70; color: var(--sub); border-radius: 20px; padding: 2px 9px; font-size: 0.68rem; font-weight: 700; }
+
+  /* COMPARE CARD */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+  .compare-card { background: #0b1630; border: 1px solid var(--border); border-radius: 8px; padding: 9px 10px; }
+  .compare-card h5 { font-family: 'Rajdhani',sans-serif; color: var(--gold); font-size: 0.88rem; margin-bottom: 5px; }
+  .compare-card p { font-size: 0.75rem; color: #b8c8f0; line-height: 1.5; }
+
+  /* QUIZ */
+  .score-bar { background: #0b1630; border: 1px solid var(--border); border-radius: 10px; padding: 11px 15px; margin-bottom: 13px; display: flex; justify-content: space-between; align-items: center; }
+  .score-bar span { color: var(--sub); font-size: 0.81rem; }
+  .score-val { color: var(--gold); font-weight: 700; font-size: 1.05rem; font-family: 'Rajdhani',sans-serif; }
+  .qcard { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 11px; }
+  .qnum { font-size: 0.68rem; color: var(--sub); margin-bottom: 3px; }
+  .qtext { font-size: 0.87rem; font-weight: 700; color: var(--white); margin-bottom: 11px; line-height: 1.5; }
+  .opt { display: block; width: 100%; background: #1a2a50; border: 1.5px solid #2a3f70; color: #b8c8f0; border-radius: 8px; padding: 9px 12px; text-align: left; font-size: 0.8rem; font-family: 'Nunito',sans-serif; cursor: pointer; margin-bottom: 6px; transition: all 0.2s; }
+  .opt:hover:not(:disabled) { background: #243660; border-color: var(--gold); color: var(--white); }
+  .opt.correct { background: #1a4a2e; border-color: var(--green); color: var(--green); }
+  .opt.wrong { background: #4a1a1a; border-color: var(--accent); color: var(--accent); }
+  .opt:disabled { cursor: not-allowed; }
+  .exp-box { display: none; background: #0d2040; border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; font-size: 0.78rem; color: var(--sub); margin-top: 4px; line-height: 1.5; }
+  .exp-box.show { display: block; }
+
+  /* BOTTOM NAV */
+  .bnav { position: fixed; bottom: 0; left: 0; right: 0; background: #0b1630; border-top: 2px solid var(--gold); display: flex; z-index: 200; overflow-x: auto; }
+  .bnav-btn { flex: 1; min-width: 60px; padding: 8px 0 6px; background: none; border: none; color: #4a6090; font-size: 0.52rem; font-family: 'Nunito',sans-serif; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; transition: color 0.2s; white-space: nowrap; }
+  .bnav-btn.active, .bnav-btn:hover { color: var(--gold); }
+  .bnav-btn svg { width: 17px; height: 17px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>IB JIO <span>Tier 2</span> – Master Study Guide</h1>
+  <p>Electronics • Commands • Networking • Technical Awareness • Skill Test • Quiz</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="show('electronics',this)">⚡ Electronics</button>
+  <button class="tab-btn" onclick="show('commands',this)">💻 CMD Commands</button>
+  <button class="tab-btn" onclick="show('networking',this)">🌐 Networking</button>
+  <button class="tab-btn" onclick="show('technical',this)">📚 Tech Awareness</button>
+  <button class="tab-btn" onclick="show('skill',this)">🛠 Skill Test</button>
+  <button class="tab-btn" onclick="show('quiz',this)">🧠 Quiz</button>
+</div>
+
+<!-- ═══════════ ELECTRONICS ═══════════ -->
+<div class="section active" id="electronics">
+<div class="sec-title">⚡ Basic Electronic Components – Detailed</div>
+
+<!-- RESISTOR -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">1</span><span class="topic-name">Resistor</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Definition</h4>
+      <p>A resistor is a passive electronic component that opposes or limits the flow of electric current in a circuit. Unit: <strong>Ohm (Ω)</strong>. Symbol: R</p>
+
+      <h4>Ohm's Law</h4>
+      <div class="cmd-box">V = I × R
+<span class="comment"># V = Voltage (Volts), I = Current (Amperes), R = Resistance (Ohms)</span>
+Power: P = V × I = I² × R = V²/R</div>
+
+      <h4>Types of Resistors</h4>
+      <ul>
+        <li><strong>Fixed Resistors:</strong> Constant resistance value
+          <ul>
+            <li><strong>Carbon Composition:</strong> Carbon + insulating material. Cheap, less accurate. Usually 4 color bands.</li>
+            <li><strong>Carbon Film:</strong> Carbon film on ceramic rod. Better accuracy than carbon composition.</li>
+            <li><strong>Metal Film:</strong> Nickel chromium film on ceramic. High accuracy (±1%), 5 color bands. Low noise.</li>
+            <li><strong>Wire-wound:</strong> Resistance wire wound on ceramic. High power handling. Used in power supplies.</li>
+            <li><strong>Thin Film Resistor:</strong> 10–1000 nm resistive layer on glass/ceramic/silicon. Tolerance ±0.1% to ±1%. Very low noise, high stability. TCR: ±5 to ±50 ppm/°C. Used in precision and high-frequency circuits.</li>
+            <li><strong>Fusible Resistor:</strong> Acts as resistor + fuse. Has 5 bands — last band is WHITE (unique identifier). Burns open to protect circuit.</li>
+            <li><strong>SMD Resistor:</strong> Surface Mount Device. Very small. Used on PCBs. Identified by 3-digit code (e.g., 472 = 47×100 = 4700 Ω).</li>
+          </ul>
+        </li>
+        <li><strong>Variable Resistors:</strong> Resistance can be changed manually
+          <ul>
+            <li><strong>Potentiometer (Pot):</strong> 3 terminals (2 ends + wiper). Works as voltage divider. Used in volume control, brightness control.</li>
+            <li><strong>Rheostat:</strong> 2 terminals. Controls current. Used in series with load. High power rating. Used in lamp dimmers, motor speed control.</li>
+            <li><strong>Trimmer (Preset):</strong> Small, adjusted with screwdriver. For calibration on PCBs. Infrequent adjustment. Also called preset resistor.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4>Resistor Color Code (4-Band)</h4>
+      <table class="tbl">
+        <tr><th>Color</th><th>Digit</th><th>Multiplier</th><th>Tolerance</th></tr>
+        <tr><td>Black</td><td>0</td><td>×1</td><td>—</td></tr>
+        <tr><td>Brown</td><td>1</td><td>×10</td><td>±1%</td></tr>
+        <tr><td>Red</td><td>2</td><td>×100</td><td>±2%</td></tr>
+        <tr><td>Orange</td><td>3</td><td>×1K</td><td>—</td></tr>
+        <tr><td>Yellow</td><td>4</td><td>×10K</td><td>—</td></tr>
+        <tr><td>Green</td><td>5</td><td>×100K</td><td>±0.5%</td></tr>
+        <tr><td>Blue</td><td>6</td><td>×1M</td><td>±0.25%</td></tr>
+        <tr><td>Violet</td><td>7</td><td>×10M</td><td>±0.1%</td></tr>
+        <tr><td>Grey</td><td>8</td><td>—</td><td>±0.05%</td></tr>
+        <tr><td>White</td><td>9</td><td>—</td><td>Fusible</td></tr>
+        <tr><td>Gold</td><td>—</td><td>×0.1</td><td>±5%</td></tr>
+        <tr><td>Silver</td><td>—</td><td>×0.01</td><td>±10%</td></tr>
+      </table>
+      <p><strong>Memory Trick:</strong> BB ROY Great Britain Very Good Wife — Black Brown Red Orange Yellow Green Blue Violet Grey White</p>
+
+      <h4>Rheostat vs Potentiometer</h4>
+      <table class="tbl">
+        <tr><th>Feature</th><th>Rheostat</th><th>Potentiometer</th></tr>
+        <tr><td>Terminals</td><td>2</td><td>3</td></tr>
+        <tr><td>Controls</td><td>Current</td><td>Voltage</td></tr>
+        <tr><td>Connection</td><td>Series with load</td><td>Voltage divider</td></tr>
+        <tr><td>Power Rating</td><td>High</td><td>Low</td></tr>
+        <tr><td>Size</td><td>Large/bulky</td><td>Small/compact</td></tr>
+        <tr><td>Uses</td><td>Motor speed, lamp dimmer</td><td>Volume control, brightness</td></tr>
+      </table>
+
+      <h4>Series &amp; Parallel Combinations</h4>
+      <div class="cmd-box"><span class="comment"># Series: Total R = R1 + R2 + R3 (same current flows)</span>
+<span class="comment"># Parallel: 1/RT = 1/R1 + 1/R2 + 1/R3 (same voltage)</span>
+<span class="comment"># Two parallel resistors: RT = (R1 × R2) / (R1 + R2)</span></div>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> Fusible resistor has WHITE as its last (5th) band — the only resistor with a white band. It acts as both a resistor and a fuse, protecting circuits from overcurrent.</div>
+      <div class="tag-row"><span class="tag">Ohm's Law</span><span class="tag">Color Code</span><span class="tag">Potentiometer</span><span class="tag">Rheostat</span><span class="tag">Thin Film</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPACITOR -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">2</span><span class="topic-name">Capacitor</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Definition</h4>
+      <p>A capacitor is a passive component that stores electrical energy in the form of an electric field. It consists of two conducting plates separated by an insulating material called dielectric. Unit: <strong>Farad (F)</strong>. Practical units: µF, nF, pF.</p>
+
+      <h4>Formula</h4>
+      <div class="cmd-box">Q = C × V
+<span class="comment"># Q = Charge (Coulombs), C = Capacitance (Farads), V = Voltage</span>
+Energy stored: E = ½ × C × V²</div>
+
+      <h4>Types of Capacitors</h4>
+
+      <h4>1. Fixed Capacitors</h4>
+      <ul>
+        <li><strong>Mica Capacitor:</strong> Dielectric = Mica (silvered). Non-polarized. Very stable capacitance. Low dielectric loss. High Q-factor. High insulation resistance. Long life. Used in RF amplifiers, oscillators, tuned circuits, communication equipment. Frequency: up to GHz range.</li>
+        <li><strong>Ceramic Capacitor:</strong> Dielectric = Ceramic material. Non-polarized. Most commonly used. Types: Disc ceramic &amp; MLCC (Multilayer Ceramic Capacitor). Used in decoupling, filtering, bypassing.</li>
+        <li><strong>Paper Capacitor:</strong> Dielectric = Thin paper (oil-impregnated or waxed). Metal foil as plates. Non-polarized. Rolled into cylinder. Used in audio coupling (older equipment), AC signal coupling.</li>
+        <li><strong>Film Capacitor (Plastic Capacitor):</strong> Dielectric = Plastic film (Polyester, Polypropylene, Polystyrene). Non-polarized. High stability, reliability. Used in audio circuits, timing circuits, filters, oscillators.</li>
+        <li><strong>Electrolytic Capacitor:</strong> Polarized (has + and − terminals). Dielectric = thin oxide layer. Cathode = electrolyte (liquid/gel/solid). Very high capacitance (µF to mF range). Types: Aluminium (high capacitance, low cost) &amp; Tantalum (small size, stable, expensive). ⚠️ Reverse connection can BURST the capacitor. Used in power supply filters, audio amplifiers, DC smoothing.</li>
+      </ul>
+
+      <h4>2. Variable (Adjustable) Capacitors</h4>
+      <ul>
+        <li>Capacitance changes by varying overlapping area or distance between plates</li>
+        <li>One plate fixed, other moves/rotates</li>
+        <li>Used in radio tuning, RF circuits</li>
+        <li><strong>Trimmer Capacitor:</strong> Small, adjusted with screwdriver. For fine-tuning circuits on PCB.</li>
+      </ul>
+
+      <h4>Capacitor Applications</h4>
+      <ul>
+        <li><strong>Energy Storage:</strong> Camera flash, power backup</li>
+        <li><strong>Power Supply Filtering:</strong> Smooths DC ripples after rectification</li>
+        <li><strong>Coupling:</strong> Passes AC, blocks DC (used in amplifiers)</li>
+        <li><strong>Decoupling:</strong> Removes noise from power supply</li>
+        <li><strong>Motor Starting:</strong> Creates phase shift to start AC motors (fans, pumps)</li>
+        <li><strong>Tuning:</strong> Select frequency in radio/TV</li>
+        <li><strong>Timing:</strong> RC circuits with 555 timer IC</li>
+        <li><strong>Power Factor Correction:</strong> Industrial use</li>
+        <li><strong>DRAM Memory:</strong> Each memory cell is a capacitor</li>
+        <li><strong>Voltage Regulation</strong></li>
+      </ul>
+
+      <h4>Capacitor Comparison</h4>
+      <table class="tbl">
+        <tr><th>Type</th><th>Polarized</th><th>Capacitance</th><th>Best Use</th></tr>
+        <tr><td>Mica</td><td>No</td><td>pF to nF</td><td>RF/High frequency</td></tr>
+        <tr><td>Ceramic</td><td>No</td><td>pF to µF</td><td>General purpose</td></tr>
+        <tr><td>Film</td><td>No</td><td>nF to µF</td><td>Audio, timing</td></tr>
+        <tr><td>Electrolytic</td><td>Yes</td><td>µF to mF</td><td>Power supply</td></tr>
+        <tr><td>Tantalum</td><td>Yes</td><td>µF range</td><td>Compact, stable DC</td></tr>
+      </table>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> Electrolytic capacitors are polarized — always connect + to + and − to −. Reverse polarity causes the capacitor to burst due to internal gas buildup. The negative side is marked with a stripe (−) on the capacitor body.</div>
+      <div class="tag-row"><span class="tag">Mica</span><span class="tag">Ceramic</span><span class="tag">Electrolytic</span><span class="tag">MLCC</span><span class="tag">Tantalum</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIODE -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">3</span><span class="topic-name">Diode – All Types</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Definition</h4>
+      <p>A diode is a semiconductor device with a PN junction that allows current to flow in only one direction (from Anode (+) to Cathode (−) when forward biased). Forward voltage drop: ~0.7V for Silicon, ~0.3V for Germanium.</p>
+
+      <h4>Biasing</h4>
+      <ul>
+        <li><strong>Forward Biased:</strong> P-side connected to +, N-side to −. Current flows. Low resistance.</li>
+        <li><strong>Reverse Biased:</strong> P-side connected to −, N-side to +. No current (except leakage). High resistance.</li>
+      </ul>
+
+      <h4>Types of Diodes</h4>
+      <ul>
+        <li><strong>PN Junction Diode:</strong> Basic diode. Used for rectification, signal clipping, clamping.</li>
+        <li><strong>Zener Diode:</strong> Operates in reverse breakdown. Maintains constant voltage (voltage reference). Used in voltage regulators. Symbol: bent cathode.</li>
+        <li><strong>LED (Light Emitting Diode):</strong> Emits light when forward biased. Heavily doped. Color depends on semiconductor material (GaAs=IR, GaP=Green, GaN=Blue/White). Used in displays, indicators, lighting.</li>
+        <li><strong>Photodiode:</strong> Converts light to current. Works in reverse bias. Used in solar cells, optical sensors, cameras.</li>
+        <li><strong>Schottky Diode:</strong> Metal-semiconductor junction. Very fast switching. Low forward voltage drop (~0.3V). Common parts: 1N5819, SS14, SS34, BAT54. Used in SMPS, solar circuits, mobile chargers. No reverse recovery time.</li>
+        <li><strong>Varactor (Varicap) Diode:</strong> Voltage-controlled capacitor. Works in reverse bias. Internal capacitance varies with voltage. Used in tuning circuits, VCOs, FM radio.</li>
+        <li><strong>Tunnel Diode:</strong> Heavily doped. Shows negative resistance region. Extremely fast switching (picoseconds). Used in microwave oscillators, amplifiers.</li>
+        <li><strong>Avalanche Diode:</strong> Designed to operate in avalanche breakdown. Used for overvoltage protection and RF noise generation.</li>
+        <li><strong>Gunn Diode:</strong> Not a PN junction — uses bulk semiconductor effect. Generates microwave frequencies. Used in radar, microwave oscillators.</li>
+        <li><strong>Laser Diode:</strong> Emits coherent (laser) light. Used in optical fiber communication, barcode scanners, optical drives, laser printers.</li>
+        <li><strong>Shockley Diode:</strong> 4-layer PNPN device (thyristor equivalent). Switches on when voltage exceeds breakover voltage.</li>
+      </ul>
+
+      <h4>PN Junction Diode Applications</h4>
+      <ul>
+        <li><strong>Rectification:</strong> Converts AC to DC (half-wave and full-wave rectifiers)</li>
+        <li><strong>Clipping:</strong> Limits signal voltage level — clips above/below threshold</li>
+        <li><strong>Clamping:</strong> Shifts signal DC level without changing shape</li>
+        <li><strong>Demodulation:</strong> Extracts original signal from AM/FM carrier</li>
+        <li><strong>Logic Gates:</strong> Used to build AND, OR logic gates</li>
+        <li><strong>Reverse Polarity Protection:</strong> Protects circuit from wrong battery insertion</li>
+        <li><strong>Voltage Reference:</strong> Zener diodes provide stable reference voltage</li>
+      </ul>
+
+      <h4>Common Schottky Diode Part Numbers</h4>
+      <table class="tbl">
+        <tr><th>Part</th><th>Current</th><th>Voltage</th><th>Use</th></tr>
+        <tr><td>1N5819</td><td>1A</td><td>40V</td><td>General rectification</td></tr>
+        <tr><td>SS14</td><td>1A</td><td>40V</td><td>Adapters, SMPS</td></tr>
+        <tr><td>SS34</td><td>3A</td><td>40V</td><td>Power circuits</td></tr>
+        <tr><td>BAT54</td><td>200mA</td><td>30V</td><td>SMD, RF circuits</td></tr>
+      </table>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> Schottky diode has NO reverse recovery time — it can switch at very high speeds (GHz range), unlike standard PN diodes. This makes it ideal for SMPS and high-frequency circuits.</div>
+      <div class="tag-row"><span class="tag">PN Diode</span><span class="tag">Zener</span><span class="tag">LED</span><span class="tag">Schottky</span><span class="tag">Varactor</span><span class="tag">Tunnel</span><span class="tag">Laser</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSISTOR -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">4</span><span class="topic-name">Transistor</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Definition</h4>
+      <p>A transistor is a semiconductor device used to amplify or switch electronic signals. It has 3 terminals: Base (B), Collector (C), Emitter (E).</p>
+
+      <h4>Types of BJT (Bipolar Junction Transistor)</h4>
+      <ul>
+        <li><strong>NPN:</strong> Current flows from Collector to Emitter when base is positive. Most common.</li>
+        <li><strong>PNP:</strong> Current flows from Emitter to Collector when base is negative.</li>
+      </ul>
+
+      <h4>Number Systems (Digital Electronics)</h4>
+      <ul>
+        <li>Binary (base 2), Octal (base 8), Decimal (base 10), Hexadecimal (base 16)</li>
+        <li>Binary 1010 = Decimal 10 = Hex A</li>
+      </ul>
+
+      <h4>Common NPN Transistors</h4>
+      <table class="tbl">
+        <tr><th>Part</th><th>Use</th></tr>
+        <tr><td>BC547/BC548/BC549</td><td>General purpose amplifier, audio</td></tr>
+        <tr><td>2N2222</td><td>Switching &amp; amplification</td></tr>
+        <tr><td>2N3904</td><td>Low-power general purpose</td></tr>
+        <tr><td>2N3055</td><td>High power (15A, 115W)</td></tr>
+        <tr><td>SL100</td><td>Medium power switching</td></tr>
+        <tr><td>TIP41</td><td>Power amplifier</td></tr>
+      </table>
+
+      <h4>Common PNP Transistors</h4>
+      <table class="tbl">
+        <tr><th>Part</th><th>Use</th></tr>
+        <tr><td>BC557/BC558</td><td>General purpose, low-noise audio</td></tr>
+        <tr><td>2N3906</td><td>Low-power complementary to 2N3904</td></tr>
+        <tr><td>TIP42</td><td>Power amplifier (complementary to TIP41)</td></tr>
+        <tr><td>MJ2955</td><td>High power PNP (complementary to 2N3055)</td></tr>
+      </table>
+
+      <h4>Transistor Numbering Systems</h4>
+      <ul>
+        <li><strong>JEDEC (USA):</strong> Format = 2Nxxxx. "2" = 2 PN junctions, "N" = semiconductor. e.g. 2N2222, 2N3904, 2N3055</li>
+        <li><strong>Pro Electron (Europe):</strong> Two letters + number. 1st letter = material (A=Germanium, B=Silicon, C=GaAs). 2nd letter = type (C=low power audio, F=high frequency, D=power). e.g. BC547 (B=Silicon, C=low power audio), BD139 (B=Silicon, D=power)</li>
+        <li><strong>JIS (Japan):</strong> Format = 2SAxxxx, 2SBxxxx, 2SCxxxx, 2SDxxxx</li>
+      </ul>
+
+      <h4>FET Types (Field Effect Transistor)</h4>
+      <ul>
+        <li><strong>JFET (Junction FET):</strong> Voltage-controlled. N-channel and P-channel types. Terminals: Gate, Drain, Source.</li>
+        <li><strong>MOSFET:</strong> Metal Oxide Semiconductor FET. Enhancement or Depletion mode. Very high input impedance. Used in power supplies, digital ICs, amplifiers.</li>
+        <li><strong>CMOS:</strong> Complementary MOS — uses both N-channel and P-channel MOSFETs together. Very low power consumption. Used in all digital ICs, microprocessors.</li>
+      </ul>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> In JEDEC system: 1N = diode (1 junction), 2N = BJT or single-gate FET (2 junctions), 3N = dual gate FET. So 1N4148 is a diode, 2N3904 is a transistor.</div>
+      <div class="tag-row"><span class="tag">NPN/PNP</span><span class="tag">JEDEC</span><span class="tag">MOSFET</span><span class="tag">JFET</span><span class="tag">CMOS</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUCTOR -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">5</span><span class="topic-name">Inductor &amp; Other Components</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Inductor</h4>
+      <p>A passive component that stores energy in a magnetic field when current flows through it. Made of wire coil. Unit: <strong>Henry (H)</strong>. Symbol: L</p>
+      <ul>
+        <li><strong>Color:</strong> Color-coded inductor is usually GREEN; resistor is usually BLUE/GREY/BEIGE</li>
+        <li><strong>Appearance:</strong> Inductor is straight cylindrical (sharp ends), resistor is dumbbell-shaped (large at ends, thin in middle)</li>
+        <li><strong>Resistance:</strong> Inductor has very low resistance (few ohms); resistor has much higher resistance (hundreds of ohms)</li>
+        <li><strong>Oppose current change:</strong> Inductors resist changes in current flow</li>
+        <li>Used in filters, transformers, oscillators, RF chokes, power supplies</li>
+      </ul>
+
+      <h4>Active vs Passive Components</h4>
+      <table class="tbl">
+        <tr><th>Feature</th><th>Active Components</th><th>Passive Components</th></tr>
+        <tr><td>Energy</td><td>Supplies/controls energy</td><td>Stores/dissipates energy</td></tr>
+        <tr><td>External power</td><td>Required</td><td>Not required</td></tr>
+        <tr><td>Amplification</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Examples</td><td>Transistor, Diode, IC</td><td>Resistor, Capacitor, Inductor</td></tr>
+      </table>
+
+      <h4>Relay</h4>
+      <p>An electrically operated switch that uses a small control current to switch a larger separate circuit. Acts as an amplifier or isolator. Types: Electromechanical relay, Solid State Relay (SSR).</p>
+      <ul>
+        <li>Terminals: Coil (+/−), Normally Open (NO), Normally Closed (NC), Common (COM)</li>
+        <li>Used in industrial automation, car electronics, protection circuits</li>
+      </ul>
+
+      <h4>Logic Gates</h4>
+      <table class="tbl">
+        <tr><th>Gate</th><th>Symbol</th><th>Truth (Simplified)</th><th>IC Number</th></tr>
+        <tr><td>AND</td><td>D-shape</td><td>Output=1 only if ALL inputs=1</td><td>7408</td></tr>
+        <tr><td>OR</td><td>Curved D</td><td>Output=1 if ANY input=1</td><td>7432</td></tr>
+        <tr><td>NOT</td><td>Triangle+bubble</td><td>Output=opposite of input</td><td>7404</td></tr>
+        <tr><td>NAND</td><td>AND+bubble</td><td>Opposite of AND</td><td>7400</td></tr>
+        <tr><td>NOR</td><td>OR+bubble</td><td>Opposite of OR</td><td>7402</td></tr>
+        <tr><td>XOR</td><td>Curved OR</td><td>Output=1 if inputs DIFFER</td><td>7486</td></tr>
+        <tr><td>XNOR</td><td>XOR+bubble</td><td>Output=1 if inputs SAME</td><td>74266</td></tr>
+      </table>
+      <div class="kp"><strong>📌 Key Fact:</strong> NAND and NOR are called "Universal Gates" — all other logic gates can be built using only NAND gates (or only NOR gates). NAND is more commonly used in practice.</div>
+      <div class="tag-row"><span class="tag">Inductor</span><span class="tag">Relay</span><span class="tag">Logic Gates</span><span class="tag">Active/Passive</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- OPTICAL FIBER -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">6</span><span class="topic-name">Optical Fiber &amp; Connectors</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Optical Fiber Cable</h4>
+      <p>Transmits data as light pulses instead of electrical signals. Very high bandwidth, low signal loss, immune to electromagnetic interference.</p>
+      <ul>
+        <li><strong>Core:</strong> High-purity glass/plastic. Light travels here.</li>
+        <li><strong>Cladding:</strong> Lower refractive index than core. Causes Total Internal Reflection.</li>
+        <li><strong>Protective Jacket:</strong> Outer covering. Provides mechanical strength, moisture protection.</li>
+      </ul>
+
+      <h4>Total Internal Reflection (TIR)</h4>
+      <p>Light traveling from denser medium (core/glass) to rarer medium (cladding/air) is completely reflected back when the angle of incidence exceeds the critical angle. This keeps light inside the core over long distances.</p>
+      <ul>
+        <li>Condition 1: Light must go from denser → rarer medium</li>
+        <li>Condition 2: Angle of incidence must be &gt; critical angle (C)</li>
+        <li>i &lt; C → Refraction; i = C → Ray along boundary; i &gt; C → TIR</li>
+      </ul>
+
+      <h4>Fiber Connector Types</h4>
+      <table class="tbl">
+        <tr><th>Connector</th><th>Type</th><th>Use</th></tr>
+        <tr><td>SC (Subscriber Connector)</td><td>Push-pull, square body</td><td>LANs, data centers</td></tr>
+        <tr><td>LC (Lucent Connector)</td><td>Small form factor</td><td>SFP modules, telecom</td></tr>
+        <tr><td>ST (Straight Tip)</td><td>Twist-and-lock bayonet</td><td>Older networks</td></tr>
+        <tr><td>FC (Ferrule Connector)</td><td>Threaded screw-type</td><td>Industrial, lab use</td></tr>
+        <tr><td>MPO/MTP</td><td>Multi-fiber (12/24/48 fibers)</td><td>Data centers, 40G/100G/400G</td></tr>
+        <tr><td>MTRJ</td><td>Small duplex connector</td><td>Networking, telecom</td></tr>
+      </table>
+      <p><strong>MTP vs MPO:</strong> All MTP connectors are MPO, but not all MPO are MTP. MTP offers better mechanical and optical performance.</p>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> LC connector is currently the most widely used in modern data centers and telecom due to its small form factor and high port density. It's used with SFP (Small Form-factor Pluggable) transceivers.</div>
+      <div class="tag-row"><span class="tag">TIR</span><span class="tag">SC/LC/ST</span><span class="tag">MTP/MPO</span><span class="tag">Fiber Optic</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BREADBOARD & INSTRUMENTS -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">7</span><span class="topic-name">Breadboard, Multimeter &amp; Instruments</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Breadboard</h4>
+      <p>A tool used in electronics to build and test circuits WITHOUT soldering. Components like resistors, LEDs, wires, ICs plug in easily and can be removed.</p>
+      <ul>
+        <li><strong>No soldering needed</strong> → reusable and beginner-friendly</li>
+        <li><strong>Easy modifications</strong> → just plug/unplug components</li>
+        <li><strong>Used for prototyping</strong> → test circuits before final PCB design</li>
+        <li>Horizontal rows in center are connected internally. Vertical rails (red=+, blue=−) are power rails.</li>
+      </ul>
+
+      <h4>Multimeter</h4>
+      <p>Measures voltage, current, and resistance. Can test continuity, diodes, capacitors (advanced models). Has two probes: Red (+) and Black (−).</p>
+      <ul>
+        <li><strong>Measuring Voltage:</strong> Set to V (AC or DC), connect in parallel</li>
+        <li><strong>Measuring Current:</strong> Set to A, connect in series (break circuit)</li>
+        <li><strong>Measuring Resistance:</strong> Set to Ω, power off circuit first</li>
+        <li><strong>Continuity:</strong> Beeps if circuit is continuous (no break)</li>
+        <li><strong>Diode Test:</strong> Shows forward voltage drop (~0.7V for Si, ~0.3V for Ge)</li>
+      </ul>
+
+      <h4>Clamp Meter</h4>
+      <p>Measures current WITHOUT breaking the circuit. The jaw clamps around a single wire to sense its magnetic field.</p>
+      <ul>
+        <li><strong>AC Clamp Meter:</strong> Uses electromagnetic induction principle</li>
+        <li><strong>DC Clamp Meter:</strong> Uses Hall Effect sensor</li>
+        <li>Also measures: Voltage, Resistance, Continuity, Capacitance, Temperature</li>
+      </ul>
+      <table class="tbl">
+        <tr><th>Feature</th><th>Clamp Meter</th><th>Multimeter</th></tr>
+        <tr><td>Current measurement</td><td>Without breaking circuit</td><td>Must break circuit</td></tr>
+        <tr><td>High current</td><td>Excellent</td><td>Limited</td></tr>
+        <tr><td>Safety</td><td>High</td><td>Medium</td></tr>
+      </table>
+
+      <h4>Oscilloscope (CRO — Cathode Ray Oscilloscope)</h4>
+      <p>Visualizes electronic signal waveforms on a screen. Shows amplitude (Y-axis) vs time (X-axis). Used to measure frequency, amplitude, phase, and waveform shape.</p>
+      <ul>
+        <li>Modern oscilloscopes are DSO (Digital Storage Oscilloscope)</li>
+        <li>Used in electronics labs, signal analysis, debugging circuits</li>
+      </ul>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> Never measure current with a multimeter in parallel — it will blow the fuse/meter. Always connect ammeters in SERIES with the circuit.</div>
+      <div class="tag-row"><span class="tag">Breadboard</span><span class="tag">Multimeter</span><span class="tag">Clamp Meter</span><span class="tag">Oscilloscope</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTS & CABLES -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">8</span><span class="topic-name">Computer Ports &amp; Cables</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>USB (Universal Serial Bus)</h4>
+      <table class="tbl">
+        <tr><th>Type</th><th>Shape</th><th>Speed</th><th>Used For</th></tr>
+        <tr><td>USB Type-A</td><td>Rectangular</td><td>Up to 5 Gbps</td><td>Computers, chargers, power banks</td></tr>
+        <tr><td>USB Type-B</td><td>Square beveled</td><td>—</td><td>Printers, scanners</td></tr>
+        <tr><td>USB Mini-B</td><td>Small trapezoid</td><td>—</td><td>Older cameras (obsolete)</td></tr>
+        <tr><td>USB Micro-B</td><td>Small flat</td><td>—</td><td>Older Android phones</td></tr>
+        <tr><td>USB Type-C</td><td>Oval, reversible</td><td>Up to 40 Gbps</td><td>Modern phones, laptops, fast charging</td></tr>
+      </table>
+
+      <h4>Display / Video Ports</h4>
+      <table class="tbl">
+        <tr><th>Port</th><th>Signal</th><th>Audio</th><th>Color/Note</th></tr>
+        <tr><td>HDMI</td><td>Digital HD</td><td>Yes</td><td>Most common display port</td></tr>
+        <tr><td>DisplayPort (DP)</td><td>Digital</td><td>Yes</td><td>Gaming monitors, 4K/8K, daisy chain</td></tr>
+        <tr><td>VGA</td><td>Analog</td><td>No</td><td>Blue, 15-pin, older monitors</td></tr>
+        <tr><td>DVI</td><td>Digital/Analog</td><td>No</td><td>Older LCDs, graphics cards</td></tr>
+      </table>
+
+      <h4>Audio Ports (3.5mm Color Code)</h4>
+      <ul>
+        <li><strong>Green:</strong> Speaker / Headphone output (Line-Out)</li>
+        <li><strong>Pink:</strong> Microphone input</li>
+        <li><strong>Blue:</strong> Line-In (external audio input)</li>
+      </ul>
+
+      <h4>PS/2 Ports (Personal System/2)</h4>
+      <ul>
+        <li><strong>Purple:</strong> Keyboard (6-pin mini-DIN)</li>
+        <li><strong>Green:</strong> Mouse</li>
+        <li>Used in older PC systems, now replaced by USB</li>
+      </ul>
+
+      <h4>Network (Ethernet) Port</h4>
+      <ul>
+        <li>RJ-45 connector — looks like large phone jack (8 pins)</li>
+        <li>Used for wired LAN/internet connection</li>
+        <li>Speeds: 100 Mbps (Fast Ethernet), 1 Gbps (Gigabit), 10 Gbps</li>
+      </ul>
+
+      <h4>RJ-11 vs RJ-45</h4>
+      <ul>
+        <li><strong>RJ-11:</strong> 6P2C or 6P4C. Used for telephone lines. Smaller.</li>
+        <li><strong>RJ-45:</strong> 8P8C. Used for Ethernet networking. Larger.</li>
+      </ul>
+
+      <h4>LAN Tester (Network Cable Tester)</h4>
+      <p>Tests whether an Ethernet/RJ-45 cable is working correctly. Shows if all 8 wires are connected properly in the right order. Detects: open circuit, short circuit, crossed wires, split pairs.</p>
+
+      <h4>InfiniBand Connector</h4>
+      <p>High-performance connector for data centers, HPC (High-Performance Computing), AI/ML clusters, supercomputers. Supports very low latency and very high bandwidth. Used in inter-server communication.</p>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> USB Type-C supports USB 4.0 (up to 40 Gbps), Thunderbolt 4, DisplayPort, HDMI, and Power Delivery (up to 240W) — all in one reversible connector.</div>
+      <div class="tag-row"><span class="tag">USB-C</span><span class="tag">HDMI</span><span class="tag">VGA</span><span class="tag">RJ-45</span><span class="tag">PS/2</span><span class="tag">LAN Tester</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ CMD COMMANDS ═══════════ -->
+<div class="section" id="commands">
+<div class="sec-title">💻 CMD &amp; Network Commands – Complete Reference</div>
+
+<!-- BASIC CMD -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">1</span><span class="topic-name">Basic Windows CMD Commands</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Navigation Commands</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> cd Documents          <span class="comment"># Change directory to Documents</span>
+<span class="prompt">C:\></span> cd ..                  <span class="comment"># Go one level up (parent folder)</span>
+<span class="prompt">C:\></span> cd ..\..\              <span class="comment"># Go two levels up</span>
+<span class="prompt">C:\></span> cd \                   <span class="comment"># Go to root of current drive (C:\)</span>
+<span class="prompt">C:\></span> cd D:\                 <span class="comment"># Switch to D drive root</span>
+<span class="prompt">C:\></span> D:                     <span class="comment"># Switch to D drive</span>
+<span class="prompt">C:\></span> dir                    <span class="comment"># List files and folders in current directory</span>
+<span class="prompt">C:\></span> dir /a                  <span class="comment"># Show hidden files too</span>
+<span class="prompt">C:\></span> dir /s                  <span class="comment"># List all files in subdirectories also</span></div>
+
+      <h4>Folder/Directory Commands</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> mkdir FolderName       <span class="comment"># Create new folder (make directory)</span>
+<span class="prompt">C:\></span> md FolderName           <span class="comment"># Same as mkdir</span>
+<span class="prompt">C:\></span> rmdir FolderName        <span class="comment"># Remove/delete empty folder</span>
+<span class="prompt">C:\></span> rd FolderName           <span class="comment"># Same as rmdir</span>
+<span class="prompt">C:\></span> rmdir /s FolderName     <span class="comment"># Delete folder and ALL contents inside</span>
+<span class="prompt">C:\></span> rmdir /s /q FolderName  <span class="comment"># Delete without asking confirmation (quiet mode)</span></div>
+
+      <h4>File Commands</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> copy file.txt D:\       <span class="comment"># Copy file to D drive</span>
+<span class="prompt">C:\></span> copy A.txt B.txt        <span class="comment"># Copy A.txt and name it B.txt</span>
+<span class="prompt">C:\></span> move file.txt D:\Docs   <span class="comment"># Move file to D:\Docs folder</span>
+<span class="prompt">C:\></span> del file.txt            <span class="comment"># Delete a file</span>
+<span class="prompt">C:\></span> del /f file.txt         <span class="comment"># Force delete (even read-only files)</span>
+<span class="prompt">C:\></span> del *.txt               <span class="comment"># Delete all .txt files in current folder</span>
+<span class="prompt">C:\></span> ren old.txt new.txt     <span class="comment"># Rename file</span>
+<span class="prompt">C:\></span> type file.txt           <span class="comment"># Display contents of a text file</span>
+<span class="prompt">C:\></span> xcopy Source Dest /e /i  <span class="comment"># Copy folder with all subfolders</span></div>
+
+      <h4>Echo &amp; Display Commands</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> echo Hello World        <span class="comment"># Print text to screen</span>
+<span class="prompt">C:\></span> echo %USERNAME%         <span class="comment"># Print current logged-in username</span>
+<span class="prompt">C:\></span> echo %COMPUTERNAME%     <span class="comment"># Print computer name</span>
+<span class="prompt">C:\></span> echo %DATE%             <span class="comment"># Print current date</span>
+<span class="prompt">C:\></span> echo %TIME%             <span class="comment"># Print current time</span>
+<span class="prompt">C:\></span> echo > file.txt         <span class="comment"># Create empty file (redirect echo)</span>
+<span class="prompt">C:\></span> echo Hello > out.txt    <span class="comment"># Write "Hello" to out.txt (overwrite)</span>
+<span class="prompt">C:\></span> echo More >> out.txt    <span class="comment"># Append "More" to out.txt</span>
+<span class="prompt">C:\></span> cls                    <span class="comment"># Clear screen</span></div>
+
+      <h4>System Info Commands</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> ver                    <span class="comment"># Show Windows version</span>
+<span class="prompt">C:\></span> winver                  <span class="comment"># Open Windows version dialog box</span>
+<span class="prompt">C:\></span> date                    <span class="comment"># Show/set current date</span>
+<span class="prompt">C:\></span> time                    <span class="comment"># Show/set current time</span>
+<span class="prompt">C:\></span> systeminfo              <span class="comment"># Full system information (OS, RAM, etc.)</span>
+<span class="prompt">C:\></span> hostname                <span class="comment"># Show computer name</span>
+<span class="prompt">C:\></span> vol C:                  <span class="comment"># Show volume label and serial number of C drive</span>
+<span class="prompt">C:\></span> title MyWindow          <span class="comment"># Change title of CMD window</span>
+<span class="prompt">C:\></span> prompt MyPrompt         <span class="comment"># Change the CMD prompt text</span>
+<span class="prompt">C:\></span> color 0A                <span class="comment"># Change CMD color (0=black bg, A=green text)</span></div>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> <code>cd ..</code> goes up one level. <code>cd ..\..</code> goes up two levels. <code>cd \</code> goes to root of current drive. These are the most commonly tested navigation commands.</div>
+    </div>
+  </div>
+</div>
+
+<!-- USER MANAGEMENT -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">2</span><span class="topic-name">User Management Commands</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Create, Delete &amp; Manage Users</h4>
+      <div class="cmd-box"><span class="comment"># Create a new user account</span>
+<span class="prompt">C:\></span> net user NewUser Password123 /add
+
+<span class="comment"># Create user without password</span>
+<span class="prompt">C:\></span> net user NewUser /add
+
+<span class="comment"># Delete a user</span>
+<span class="prompt">C:\></span> net user NewUser /delete
+
+<span class="comment"># Change user's password</span>
+<span class="prompt">C:\></span> net user NewUser NewPass456
+
+<span class="comment"># View all user accounts on system</span>
+<span class="prompt">C:\></span> net user
+
+<span class="comment"># View details of a specific user</span>
+<span class="prompt">C:\></span> net user NewUser
+
+<span class="comment"># Activate/deactivate user account</span>
+<span class="prompt">C:\></span> net user NewUser /active:yes
+<span class="prompt">C:\></span> net user NewUser /active:no</div>
+
+      <h4>Add User to Groups</h4>
+      <div class="cmd-box"><span class="comment"># Add user to Administrators group</span>
+<span class="prompt">C:\></span> net localgroup Administrators NewUser /add
+
+<span class="comment"># Remove user from Administrators group</span>
+<span class="prompt">C:\></span> net localgroup Administrators NewUser /delete
+
+<span class="comment"># View all local groups</span>
+<span class="prompt">C:\></span> net localgroup
+
+<span class="comment"># View members of a group</span>
+<span class="prompt">C:\></span> net localgroup Administrators
+
+<span class="comment"># Add to Remote Desktop Users group</span>
+<span class="prompt">C:\></span> net localgroup "Remote Desktop Users" NewUser /add</div>
+
+      <h4>Who is Currently Logged In?</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> whoami                  <span class="comment"># Show current logged-in username</span>
+<span class="prompt">C:\></span> whoami /groups          <span class="comment"># Show groups of current user</span>
+<span class="prompt">C:\></span> query user              <span class="comment"># Show all logged-in users</span>
+<span class="prompt">C:\></span> query session           <span class="comment"># Show all active sessions</span></div>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> <code>net user Username Password /add</code> creates a new user. Must run CMD as Administrator for user management commands.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NETWORK COMMANDS -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">3</span><span class="topic-name">Network &amp; Diagnostic Commands</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>IP Configuration</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> ipconfig               <span class="comment"># Show basic IP info (IP, subnet, gateway)</span>
+<span class="prompt">C:\></span> ipconfig /all          <span class="comment"># Full details (MAC, DNS, DHCP server, etc.)</span>
+<span class="prompt">C:\></span> ipconfig /release      <span class="comment"># Release (give up) current IP from DHCP</span>
+<span class="prompt">C:\></span> ipconfig /renew        <span class="comment"># Get new IP from DHCP server</span>
+<span class="prompt">C:\></span> ipconfig /flushdns     <span class="comment"># Clear DNS resolver cache</span>
+<span class="prompt">C:\></span> ipconfig /displaydns   <span class="comment"># Show contents of DNS cache</span></div>
+
+      <h4>Ping – Test Connectivity</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> ping google.com        <span class="comment"># Test if you can reach google.com (4 packets)</span>
+<span class="prompt">C:\></span> ping 192.168.1.1       <span class="comment"># Ping a specific IP address</span>
+<span class="prompt">C:\></span> ping -t google.com     <span class="comment"># Ping continuously until Ctrl+C pressed</span>
+<span class="prompt">C:\></span> ping -n 10 google.com  <span class="comment"># Send exactly 10 ping packets</span>
+<span class="prompt">C:\></span> ping -l 1000 google.com <span class="comment"># Send ping with 1000 bytes packet size</span>
+<span class="prompt">C:\></span> ping 127.0.0.1         <span class="comment"># Ping loopback (tests TCP/IP stack itself)</span>
+<span class="output"># Output shows: Reply from IP, Time=xms, TTL=xx
+# Timeout = host unreachable or firewall blocking</span></div>
+
+      <h4>Tracert – Trace Route</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> tracert google.com     <span class="comment"># Show path packets take to reach google.com</span>
+<span class="prompt">C:\></span> tracert 8.8.8.8        <span class="comment"># Trace route to Google DNS server</span>
+<span class="prompt">C:\></span> tracert -d google.com  <span class="comment"># Don't resolve hostnames (faster)</span>
+<span class="output"># Shows each router/hop in the path with latency</span></div>
+
+      <h4>Netstat – Network Statistics</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> netstat                <span class="comment"># Show active connections</span>
+<span class="prompt">C:\></span> netstat -a              <span class="comment"># Show all connections and listening ports</span>
+<span class="prompt">C:\></span> netstat -n              <span class="comment"># Show IP addresses (not hostnames)</span>
+<span class="prompt">C:\></span> netstat -b              <span class="comment"># Show which program is using each connection</span>
+<span class="prompt">C:\></span> netstat -an             <span class="comment"># All connections in numeric form (most used)</span>
+<span class="prompt">C:\></span> netstat -o              <span class="comment"># Show Process ID (PID) for each connection</span></div>
+
+      <h4>NSLookup – DNS Lookup</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> nslookup google.com    <span class="comment"># Find IP address of google.com</span>
+<span class="prompt">C:\></span> nslookup 8.8.8.8       <span class="comment"># Reverse lookup – find hostname for IP</span>
+<span class="prompt">C:\></span> nslookup                <span class="comment"># Enter interactive mode</span></div>
+
+      <h4>ARP – Address Resolution Protocol</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> arp -a                 <span class="comment"># Show ARP table (IP to MAC mappings)</span>
+<span class="prompt">C:\></span> arp -d                 <span class="comment"># Delete all ARP cache entries</span></div>
+
+      <h4>Netsh – Network Shell</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> netsh wlan show profiles       <span class="comment"># Show saved Wi-Fi networks</span>
+<span class="prompt">C:\></span> netsh wlan show profile "WiFiName" key=clear  <span class="comment"># Show Wi-Fi password</span>
+<span class="prompt">C:\></span> netsh interface ip show config  <span class="comment"># Show IP config of all adapters</span>
+<span class="prompt">C:\></span> netsh advfirewall set allprofiles state off  <span class="comment"># Disable Windows Firewall</span></div>
+
+      <h4>Net – Network Services</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> net start              <span class="comment"># List all running Windows services</span>
+<span class="prompt">C:\></span> net stop "ServiceName"  <span class="comment"># Stop a service</span>
+<span class="prompt">C:\></span> net start "ServiceName" <span class="comment"># Start a service</span>
+<span class="prompt">C:\></span> net share              <span class="comment"># Show shared resources on computer</span>
+<span class="prompt">C:\></span> net view               <span class="comment"># Show computers in network</span></div>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> <code>ping 127.0.0.1</code> is the loopback address. If this fails, your TCP/IP stack is broken. If ping works but internet doesn't, the problem is elsewhere (gateway, DNS, ISP).</div>
+      <div class="tag-row"><span class="tag">ipconfig</span><span class="tag">ping</span><span class="tag">tracert</span><span class="tag">netstat</span><span class="tag">nslookup</span><span class="tag">arp</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADVANCED COMMANDS -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">4</span><span class="topic-name">System &amp; Advanced Commands</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Process Management</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> tasklist               <span class="comment"># Show all running processes</span>
+<span class="prompt">C:\></span> tasklist /fi "imagename eq notepad.exe"  <span class="comment"># Find specific process</span>
+<span class="prompt">C:\></span> taskkill /im notepad.exe /f   <span class="comment"># Kill process by name (force)</span>
+<span class="prompt">C:\></span> taskkill /pid 1234 /f         <span class="comment"># Kill process by PID (force)</span></div>
+
+      <h4>Shutdown &amp; Restart</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> shutdown /s /t 0       <span class="comment"># Shutdown immediately</span>
+<span class="prompt">C:\></span> shutdown /r /t 0       <span class="comment"># Restart immediately</span>
+<span class="prompt">C:\></span> shutdown /l             <span class="comment"># Logout current user</span>
+<span class="prompt">C:\></span> shutdown /a             <span class="comment"># Abort a scheduled shutdown</span>
+<span class="prompt">C:\></span> shutdown /s /t 60      <span class="comment"># Shutdown after 60 seconds</span></div>
+
+      <h4>Disk Management</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> diskpart               <span class="comment"># Open disk partition manager</span>
+<span class="prompt">C:\></span> chkdsk C: /f           <span class="comment"># Check C: drive for errors and fix</span>
+<span class="prompt">C:\></span> sfc /scannow            <span class="comment"># Scan and repair system files</span>
+<span class="prompt">C:\></span> format D: /fs:ntfs     <span class="comment"># Format D drive as NTFS (WARNING: erases all data)</span>
+<span class="prompt">C:\></span> tree C:\Users           <span class="comment"># Show folder tree structure</span></div>
+
+      <h4>Finding &amp; Searching</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> find "word" file.txt    <span class="comment"># Search for "word" in file.txt</span>
+<span class="prompt">C:\></span> findstr "error" log.txt <span class="comment"># Search using pattern (like grep)</span>
+<span class="prompt">C:\></span> where notepad           <span class="comment"># Find location of an executable</span>
+<span class="prompt">C:\></span> attrib file.txt         <span class="comment"># Show file attributes (hidden, read-only, etc.)</span>
+<span class="prompt">C:\></span> attrib +h file.txt      <span class="comment"># Make file hidden</span>
+<span class="prompt">C:\></span> attrib -h file.txt      <span class="comment"># Remove hidden attribute</span></div>
+
+      <h4>Environment &amp; Miscellaneous</h4>
+      <div class="cmd-box"><span class="prompt">C:\></span> set                    <span class="comment"># Show all environment variables</span>
+<span class="prompt">C:\></span> set PATH                <span class="comment"># Show current PATH variable</span>
+<span class="prompt">C:\></span> start notepad           <span class="comment"># Open Notepad (or any app)</span>
+<span class="prompt">C:\></span> start www.google.com    <span class="comment"># Open URL in default browser</span>
+<span class="prompt">C:\></span> help                    <span class="comment"># List all available commands</span>
+<span class="prompt">C:\></span> command /?              <span class="comment"># Help for specific command (e.g., ping /?)</span>
+<span class="prompt">C:\></span> exit                    <span class="comment"># Close CMD window</span></div>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> <code>sfc /scannow</code> (System File Checker) scans all protected Windows system files and repairs corrupted ones. Must run as Administrator. Very useful for fixing a corrupted Windows installation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LINUX COMMANDS -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">5</span><span class="topic-name">Linux Commands (Basic)</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Navigation &amp; Files</h4>
+      <div class="cmd-box"><span class="prompt">$</span> pwd                     <span class="comment"># Print working directory (current location)</span>
+<span class="prompt">$</span> ls                      <span class="comment"># List files in current directory</span>
+<span class="prompt">$</span> ls -la                  <span class="comment"># List all files including hidden, with details</span>
+<span class="prompt">$</span> cd /home/user           <span class="comment"># Change to specific directory</span>
+<span class="prompt">$</span> cd ..                   <span class="comment"># Go up one level</span>
+<span class="prompt">$</span> mkdir newfolder         <span class="comment"># Create new directory</span>
+<span class="prompt">$</span> rmdir emptyfolder       <span class="comment"># Remove empty directory</span>
+<span class="prompt">$</span> rm -rf foldername       <span class="comment"># Remove folder and everything inside (CAREFUL!)</span>
+<span class="prompt">$</span> cp file.txt /tmp/       <span class="comment"># Copy file to /tmp/</span>
+<span class="prompt">$</span> mv file.txt /home/      <span class="comment"># Move file to /home/</span>
+<span class="prompt">$</span> rm file.txt             <span class="comment"># Delete file</span>
+<span class="prompt">$</span> cat file.txt            <span class="comment"># Display file contents</span>
+<span class="prompt">$</span> grep "word" file.txt    <span class="comment"># Search for "word" in file</span></div>
+
+      <h4>Permissions</h4>
+      <div class="cmd-box"><span class="prompt">$</span> chmod 755 script.sh     <span class="comment"># rwxr-xr-x (owner=full, others=read+exec)</span>
+<span class="prompt">$</span> chmod 644 file.txt      <span class="comment"># rw-r--r-- (owner=read+write, others=read)</span>
+<span class="prompt">$</span> chown user:group file   <span class="comment"># Change owner of file</span>
+<span class="prompt">$</span> sudo command            <span class="comment"># Run command as superuser (admin)</span></div>
+
+      <h4>Network Commands (Linux)</h4>
+      <div class="cmd-box"><span class="prompt">$</span> ifconfig                <span class="comment"># Show network interfaces (older)</span>
+<span class="prompt">$</span> ip addr show            <span class="comment"># Show IP addresses (modern)</span>
+<span class="prompt">$</span> ping -c 4 google.com    <span class="comment"># Ping 4 times (Linux needs -c for count)</span>
+<span class="prompt">$</span> traceroute google.com   <span class="comment"># Trace route (Linux version of tracert)</span>
+<span class="prompt">$</span> netstat -tuln           <span class="comment"># Show open TCP/UDP ports</span>
+<span class="prompt">$</span> nmap -sn 192.168.1.0/24  <span class="comment"># Scan network for live hosts</span>
+<span class="prompt">$</span> ss -tuln                <span class="comment"># Socket statistics (modern netstat)</span>
+<span class="prompt">$</span> wget http://url/file    <span class="comment"># Download file from internet</span>
+<span class="prompt">$</span> curl http://url         <span class="comment"># Fetch URL content</span></div>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> In Linux, <code>chmod 777</code> = rwxrwxrwx (everyone has full access). <code>chmod 755</code> = rwxr-xr-x (owner full, others read+execute). <code>chmod 644</code> = rw-r--r-- (standard for files). Never use 777 in production — major security risk.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ NETWORKING ═══════════ -->
+<div class="section" id="networking">
+<div class="sec-title">🌐 Networking Devices – Complete Notes</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">1</span><span class="topic-name">Hub, Switch, Router, Bridge, Repeater</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Hub (OSI Layer 1 – Physical)</h4>
+      <ul>
+        <li>Receives data on one port → broadcasts to ALL other ports</li>
+        <li>Dumb device — no intelligence</li>
+        <li>Creates one large collision domain</li>
+        <li>Types: Passive (no signal boost), Active (amplifies signal), Intelligent (limited monitoring)</li>
+        <li>Now mostly obsolete — replaced by switches</li>
+      </ul>
+
+      <h4>Switch (OSI Layer 2 – Data Link)</h4>
+      <ul>
+        <li>Uses MAC addresses to forward data to specific destination port only</li>
+        <li>Maintains a MAC address table (CAM table)</li>
+        <li>Creates separate collision domains for each port</li>
+        <li>Supports full-duplex communication</li>
+        <li>Much more efficient than hub — reduces traffic and collisions</li>
+        <li>Layer 3 Switch can also do routing (uses IP addresses)</li>
+      </ul>
+
+      <h4>Router (OSI Layer 3 – Network)</h4>
+      <ul>
+        <li>Connects two or more DIFFERENT networks (e.g., LAN to Internet)</li>
+        <li>Uses IP addresses and routing tables to forward packets</li>
+        <li>Chooses the best path for data</li>
+        <li>Provides NAT (Network Address Translation) — shares one public IP among many devices</li>
+        <li>Provides DHCP — assigns IPs to devices on local network</li>
+        <li>Has built-in firewall in home routers</li>
+      </ul>
+
+      <h4>Bridge (OSI Layer 2)</h4>
+      <ul>
+        <li>Connects two LAN segments and filters traffic based on MAC addresses</li>
+        <li>Reduces network congestion</li>
+        <li>Smarter than hub but less capable than switch</li>
+        <li>Creates two collision domains (one per segment)</li>
+      </ul>
+
+      <h4>Repeater (OSI Layer 1)</h4>
+      <ul>
+        <li>Extends network range by regenerating and retransmitting weakened signals</li>
+        <li>Does NOT analyze data — just amplifies/regenerates signal</li>
+        <li>No MAC or IP address</li>
+        <li>Works for wired and wireless (Wi-Fi extender = wireless repeater)</li>
+      </ul>
+
+      <h4>Modem</h4>
+      <ul>
+        <li>MOdulator-DEModulator: converts digital data ↔ analog signals</li>
+        <li>Connects local network to Internet via ISP line (phone/cable/fiber)</li>
+        <li>Works at Data Link Layer</li>
+      </ul>
+
+      <h4>NIC (Network Interface Card / Ethernet Card)</h4>
+      <ul>
+        <li>Hardware that allows device to connect to wired network via RJ-45</li>
+        <li>Has a unique MAC (Media Access Control) address burned in</li>
+        <li>Converts computer data into Ethernet frames</li>
+        <li>Works at Data Link Layer</li>
+      </ul>
+
+      <table class="tbl">
+        <tr><th>Device</th><th>OSI Layer</th><th>Uses</th><th>Intelligence</th></tr>
+        <tr><td>Hub</td><td>Layer 1</td><td>Broadcasts</td><td>None</td></tr>
+        <tr><td>Repeater</td><td>Layer 1</td><td>Signal regeneration</td><td>None</td></tr>
+        <tr><td>Bridge</td><td>Layer 2</td><td>MAC filtering</td><td>Low</td></tr>
+        <tr><td>Switch</td><td>Layer 2</td><td>MAC forwarding</td><td>High</td></tr>
+        <tr><td>Router</td><td>Layer 3</td><td>IP routing</td><td>Very High</td></tr>
+        <tr><td>Modem</td><td>Layer 2</td><td>Analog↔Digital</td><td>Low</td></tr>
+      </table>
+      <div class="kp"><strong>📌 Key Fact:</strong> A home "router" is actually a router + switch + access point + modem (if DSL) combined into one device. In enterprise settings, these are separate devices.</div>
+    </div>
+  </div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">2</span><span class="topic-name">OSI Model, TCP/IP &amp; Key Protocols</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>OSI Model – 7 Layers</h4>
+      <table class="tbl">
+        <tr><th>Layer</th><th>Name</th><th>Function</th><th>Protocols/Examples</th></tr>
+        <tr><td>7</td><td>Application</td><td>User interface, services</td><td>HTTP, FTP, DNS, SMTP, POP3</td></tr>
+        <tr><td>6</td><td>Presentation</td><td>Encryption, compression, format</td><td>SSL/TLS, JPEG, MPEG</td></tr>
+        <tr><td>5</td><td>Session</td><td>Session management</td><td>NetBIOS, RPC</td></tr>
+        <tr><td>4</td><td>Transport</td><td>End-to-end delivery, port numbers</td><td>TCP, UDP</td></tr>
+        <tr><td>3</td><td>Network</td><td>Logical addressing, routing</td><td>IP, ICMP, ARP</td></tr>
+        <tr><td>2</td><td>Data Link</td><td>MAC addressing, frames</td><td>Ethernet, Wi-Fi (802.11)</td></tr>
+        <tr><td>1</td><td>Physical</td><td>Bits, cables, signals</td><td>Cables, Fiber, Radio waves</td></tr>
+      </table>
+      <p><strong>Mnemonic (Top→Bottom):</strong> All People Seem To Need Data Processing</p>
+      <p><strong>Mnemonic (Bottom→Top):</strong> Please Do Not Throw Sausage Pizza Away</p>
+
+      <h4>IP Addressing</h4>
+      <ul>
+        <li><strong>IPv4:</strong> 32-bit, format: 192.168.1.1 (about 4 billion addresses)</li>
+        <li><strong>IPv6:</strong> 128-bit, format: 2001:db8::1 (virtually unlimited)</li>
+        <li><strong>Private IP ranges:</strong> 10.x.x.x, 172.16-31.x.x, 192.168.x.x</li>
+        <li><strong>Subnet Mask:</strong> Divides IP into network and host portions</li>
+      </ul>
+
+      <h4>Important Port Numbers</h4>
+      <table class="tbl">
+        <tr><th>Port</th><th>Protocol</th><th>Use</th></tr>
+        <tr><td>20/21</td><td>FTP</td><td>File Transfer</td></tr>
+        <tr><td>22</td><td>SSH</td><td>Secure Remote Login</td></tr>
+        <tr><td>23</td><td>Telnet</td><td>Unsecure Remote Login</td></tr>
+        <tr><td>25</td><td>SMTP</td><td>Send Email</td></tr>
+        <tr><td>53</td><td>DNS</td><td>Domain Name Resolution</td></tr>
+        <tr><td>67/68</td><td>DHCP</td><td>Auto IP Assignment</td></tr>
+        <tr><td>80</td><td>HTTP</td><td>Web (unsecure)</td></tr>
+        <tr><td>110</td><td>POP3</td><td>Receive Email</td></tr>
+        <tr><td>143</td><td>IMAP</td><td>Email (with sync)</td></tr>
+        <tr><td>443</td><td>HTTPS</td><td>Secure Web</td></tr>
+        <tr><td>3306</td><td>MySQL</td><td>Database</td></tr>
+        <tr><td>3389</td><td>RDP</td><td>Remote Desktop</td></tr>
+        <tr><td>5432</td><td>PostgreSQL</td><td>Database</td></tr>
+      </table>
+
+      <div class="kp"><strong>📌 Key Fact:</strong> TCP is connection-oriented (3-way handshake: SYN → SYN-ACK → ACK). UDP is connectionless and faster but no guarantee of delivery. HTTP uses TCP port 80; HTTPS uses TCP port 443.</div>
+    </div>
+  </div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">3</span><span class="topic-name">Telecommunications</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="cb">
+      <h4>Modulation Types</h4>
+      <ul>
+        <li><strong>AM (Amplitude Modulation):</strong> Amplitude of carrier changes with signal</li>
+        <li><strong>FM (Frequency Modulation):</strong> Frequency changes — better noise immunity</li>
+        <li><strong>PM (Phase Modulation):</strong> Phase of carrier signal is varied</li>
+      </ul>
+
+      <h4>Mobile Communication Standards</h4>
+      <ul>
+        <li><strong>1G:</strong> Analog voice calls</li>
+        <li><strong>2G (GSM):</strong> Digital voice + SMS</li>
+        <li><strong>3G (UMTS/CDMA):</strong> Mobile internet, video calling</li>
+        <li><strong>4G (LTE):</strong> High speed data, HD streaming</li>
+        <li><strong>5G:</strong> Ultra-low latency, IoT, speeds up to 10 Gbps</li>
+      </ul>
+
+      <h4>Protocols &amp; Equipment</h4>
+      <ul>
+        <li>PSTN – Public Switched Telephone Network</li>
+        <li>VoIP – Voice over Internet Protocol (e.g., WhatsApp calls)</li>
+        <li>PBX – Private Branch Exchange (office telephone system)</li>
+        <li>Satellite communication – LEO, MEO, GEO orbits</li>
+      </ul>
+
+      <h4>Frequency Bands</h4>
+      <ul>
+        <li>HF (3–30 MHz), VHF (30–300 MHz), UHF (300 MHz–3 GHz)</li>
+        <li>Microwave: Above 1 GHz — used for satellite and backhaul</li>
+      </ul>
+      <div class="kp"><strong>📌 Key Fact:</strong> CDMA (Code Division Multiple Access) allows multiple users to share the same frequency simultaneously using different codes.</div>
+      <div class="tag-row"><span class="tag">AM/FM</span><span class="tag">5G</span><span class="tag">VoIP</span><span class="tag">Satellite</span><span class="tag">GSM/CDMA</span></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ TECHNICAL AWARENESS ═══════════ -->
+<div class="section" id="technical">
+<div class="sec-title">📚 Technical Awareness – All 20 Topics</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">1</span><span class="topic-name">Computer Skills</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>MS Office Essentials</h4>
+    <ul>
+      <li><strong>MS Word:</strong> Creating documents, formatting, mail merge, track changes</li>
+      <li><strong>MS Excel:</strong> Formulas (SUM, VLOOKUP, IF), pivot tables, charts, data sorting/filtering</li>
+      <li><strong>MS PowerPoint:</strong> Slide design, animations, presentation delivery</li>
+      <li><strong>MS Outlook:</strong> Email management, calendar, tasks</li>
+    </ul>
+    <h4>Operating Systems</h4>
+    <ul>
+      <li><strong>Windows:</strong> File management, Task Manager, Registry, Command Prompt (ipconfig, ping, dir, cd)</li>
+      <li><strong>Linux:</strong> Basic commands — ls, cd, pwd, cp, mv, rm, chmod, grep, top</li>
+    </ul>
+    <h4>File Systems &amp; Management</h4>
+    <ul>
+      <li>NTFS (Windows), FAT32, ext4 (Linux)</li>
+      <li>File permissions: Read (r), Write (w), Execute (x)</li>
+      <li>Compression tools: ZIP, RAR, 7-Zip</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> In Linux, "chmod 755 file" gives owner full permissions and others read+execute only.</div>
+    <div class="tag-row"><span class="tag">MS Office</span><span class="tag">Windows/Linux</span><span class="tag">File Systems</span><span class="tag">CLI Commands</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">2</span><span class="topic-name">Electronics Knowledge</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Basic Electronic Components</h4>
+    <ul>
+      <li><strong>Resistor:</strong> Opposes current flow. Unit: Ohm (Ω). Ohm's Law: V = IR</li>
+      <li><strong>Capacitor:</strong> Stores electrical energy. Unit: Farad (F)</li>
+      <li><strong>Inductor:</strong> Stores energy in magnetic field. Unit: Henry (H)</li>
+      <li><strong>Diode:</strong> Allows current in one direction only (PN junction)</li>
+      <li><strong>Transistor:</strong> Acts as switch or amplifier (BJT, MOSFET)</li>
+    </ul>
+    <h4>Circuit Types</h4>
+    <ul>
+      <li><strong>Series Circuit:</strong> Same current, voltages add up</li>
+      <li><strong>Parallel Circuit:</strong> Same voltage, currents add up</li>
+      <li><strong>AC vs DC:</strong> AC changes direction periodically; DC flows in one direction</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> NAND gate is called "universal gate" — all other gates can be made using only NAND gates. See the detailed Electronics tab for full component breakdowns.</div>
+    <div class="tag-row"><span class="tag">Ohm's Law</span><span class="tag">Logic Gates</span><span class="tag">Circuits</span><span class="tag">Number Systems</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">3</span><span class="topic-name">Telecommunications</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <p>See the Networking tab → Telecommunications topic for full detail. Key summary:</p>
+    <ul>
+      <li>AM/FM/PM modulation types; 1G→5G mobile standards</li>
+      <li>VoIP, PSTN, PBX, Satellite (LEO/MEO/GEO)</li>
+      <li>Frequency bands: HF, VHF, UHF, Microwave</li>
+      <li>CDMA: multiple users share same frequency with different codes</li>
+    </ul>
+    <div class="tag-row"><span class="tag">AM/FM</span><span class="tag">5G</span><span class="tag">VoIP</span><span class="tag">Satellite</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">4</span><span class="topic-name">Cybersecurity – CIA Triad &amp; Attacks</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>CIA Triad</h4>
+    <ul>
+      <li><strong>Confidentiality:</strong> Data only accessible to authorized persons. Methods: encryption, access control, MFA</li>
+      <li><strong>Integrity:</strong> Data is accurate and not tampered. Methods: hashing (MD5, SHA-256), digital signatures</li>
+      <li><strong>Availability:</strong> Systems accessible when needed. Methods: backups, redundancy, DDoS protection</li>
+    </ul>
+    <h4>Attack Types</h4>
+    <table class="tbl">
+      <tr><th>Attack</th><th>Description</th><th>Prevention</th></tr>
+      <tr><td>Phishing</td><td>Fake emails/sites to steal credentials</td><td>Awareness training, email filters</td></tr>
+      <tr><td>Ransomware</td><td>Encrypts data, demands ransom (WannaCry)</td><td>Backups, patch management</td></tr>
+      <tr><td>DDoS</td><td>Flood server with traffic to take it down</td><td>CDN, rate limiting, IPS</td></tr>
+      <tr><td>MITM</td><td>Intercepts communication secretly</td><td>HTTPS, VPN, certificate pinning</td></tr>
+      <tr><td>SQL Injection</td><td>Malicious SQL in web form</td><td>Input validation, parameterized queries</td></tr>
+      <tr><td>Zero-Day</td><td>Unknown vulnerability, no patch</td><td>IDS/IPS, virtual patching</td></tr>
+      <tr><td>Brute Force</td><td>Try all password combinations</td><td>Account lockout, strong passwords</td></tr>
+      <tr><td>Social Engineering</td><td>Manipulate humans to reveal info</td><td>Security awareness training</td></tr>
+    </table>
+    <h4>Encryption</h4>
+    <ul>
+      <li><strong>Symmetric (same key):</strong> AES-128/256, DES, 3DES. Fast. Key sharing problem.</li>
+      <li><strong>Asymmetric (public+private key):</strong> RSA, ECC. Public key encrypts, private key decrypts. Slower.</li>
+      <li><strong>Hashing (one-way):</strong> MD5 (128-bit), SHA-1 (160-bit), SHA-256 (256-bit). Cannot be reversed. Used for passwords.</li>
+    </ul>
+    <h4>Security Tools &amp; Concepts</h4>
+    <ul>
+      <li><strong>Firewall:</strong> Filters incoming/outgoing traffic based on rules</li>
+      <li><strong>IDS:</strong> Intrusion Detection System — monitors and alerts</li>
+      <li><strong>IPS:</strong> Intrusion Prevention System — monitors and blocks</li>
+      <li><strong>VPN:</strong> Creates encrypted tunnel for secure communication</li>
+      <li><strong>SSL/TLS:</strong> Encrypts web traffic (HTTPS uses TLS)</li>
+      <li><strong>2FA:</strong> Two-Factor Authentication — adds extra security layer</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> NCIIPC (National Critical Information Infrastructure Protection Centre) works under NTRO and protects India's critical cyber infrastructure. CERT-In (under MeitY) handles cybersecurity incidents across India.</div>
+    <div class="tag-row"><span class="tag">CIA Triad</span><span class="tag">Encryption</span><span class="tag">Phishing</span><span class="tag">Firewall</span><span class="tag">VPN</span><span class="tag">IDS/IPS</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">5</span><span class="topic-name">Network Administration</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <p>See the Networking tab for full OSI model and protocol detail. Key summary:</p>
+    <ul>
+      <li>OSI 7 Layers: Physical → Data Link → Network → Transport → Session → Presentation → Application</li>
+      <li>TCP = reliable, connection-oriented | UDP = fast, connectionless</li>
+      <li>IPv4: 32-bit | IPv6: 128-bit | Private: 10.x, 172.16-31.x, 192.168.x</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Mnemonic Bottom→Top: "Please Do Not Throw Sausage Pizza Away"</div>
+    <div class="tag-row"><span class="tag">OSI Model</span><span class="tag">TCP/UDP</span><span class="tag">IP Address</span><span class="tag">DNS/DHCP</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">6</span><span class="topic-name">Programming &amp; Scripting</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Python Basics</h4>
+    <ul>
+      <li><strong>Variables:</strong> x = 10, name = "IB JIO"</li>
+      <li><strong>Data Types:</strong> int, float, str, bool, list, dict, tuple, set</li>
+      <li><strong>Loops:</strong> for i in range(5): | while condition:</li>
+      <li><strong>Functions:</strong> def greet(name): return "Hello " + name</li>
+      <li><strong>List:</strong> fruits = ["apple","mango"] — ordered, mutable</li>
+      <li><strong>Dictionary:</strong> d = {"name":"Rahul","age":25} — key-value pairs</li>
+    </ul>
+    <h4>Common Coding Tasks in Intelligence</h4>
+    <ul>
+      <li>Parse log files to find failed login attempts</li>
+      <li>Extract specific data from JSON/XML files</li>
+      <li>Automate file renaming/organization</li>
+      <li>Send HTTP requests and analyze responses (requests library)</li>
+    </ul>
+    <h4>Key Programming Concepts</h4>
+    <ul>
+      <li><strong>OOP:</strong> Class, Object, Inheritance, Polymorphism, Encapsulation</li>
+      <li><strong>Sorting:</strong> Bubble Sort, Selection Sort, Quick Sort, Merge Sort</li>
+      <li><strong>Data Structures:</strong> Array, Stack, Queue, Linked List, Tree, Graph</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Python is most preferred for intelligence/OSINT tasks due to its rich libraries — requests, BeautifulSoup, pandas, scapy. Know how to read/understand code even if not writing from scratch.</div>
+    <div class="tag-row"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">OOP</span><span class="tag">Data Structures</span><span class="tag">Scripting</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">7</span><span class="topic-name">Data Analysis</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Data Analysis Process</h4>
+    <ul>
+      <li><strong>1. Data Collection:</strong> Gathering raw data from various sources</li>
+      <li><strong>2. Data Cleaning:</strong> Removing duplicates, handling missing values</li>
+      <li><strong>3. Data Transformation:</strong> Normalization, formatting</li>
+      <li><strong>4. Analysis:</strong> Statistical methods, pattern finding</li>
+      <li><strong>5. Visualization:</strong> Charts, graphs, dashboards</li>
+      <li><strong>6. Interpretation:</strong> Drawing conclusions</li>
+    </ul>
+    <h4>Statistical Concepts</h4>
+    <ul>
+      <li><strong>Mean:</strong> Average | <strong>Median:</strong> Middle value | <strong>Mode:</strong> Most frequent</li>
+      <li><strong>Standard Deviation:</strong> Measure of data spread</li>
+      <li><strong>Correlation:</strong> Relationship between two variables</li>
+    </ul>
+    <h4>Tools for Data Analysis</h4>
+    <ul>
+      <li>MS Excel – pivot tables, charts, formulas</li>
+      <li>Python (Pandas, NumPy, Matplotlib)</li>
+      <li>SQL – for querying databases</li>
+      <li>Power BI / Tableau – visualization dashboards</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Big Data is characterized by 3 Vs — Volume (huge amount), Velocity (generated fast), Variety (different formats).</div>
+    <div class="tag-row"><span class="tag">Statistics</span><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Big Data</span><span class="tag">Visualization</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">8</span><span class="topic-name">Technical Documentation</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Types of Technical Documents</h4>
+    <ul>
+      <li><strong>User Manual:</strong> Instructions for end-users on using a system/product</li>
+      <li><strong>Technical Report:</strong> Detailed findings of technical research/analysis</li>
+      <li><strong>SOP (Standard Operating Procedure):</strong> Step-by-step process instructions</li>
+      <li><strong>System Documentation:</strong> Architecture, design, API documentation</li>
+      <li><strong>Incident Report:</strong> Record of a security/technical incident</li>
+    </ul>
+    <h4>Key Principles</h4>
+    <ul>
+      <li>Clear and concise language — avoid jargon for non-technical readers</li>
+      <li>Accurate and up-to-date information</li>
+      <li>Proper structure: Title, Date, Author, Objective, Body, Conclusion</li>
+      <li>Version control — track changes over time</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> For IB/intelligence work, documentation must maintain chain of custody — every action, timestamp, and handler must be recorded accurately.</div>
+    <div class="tag-row"><span class="tag">SOP</span><span class="tag">Reports</span><span class="tag">User Manual</span><span class="tag">Version Control</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">9</span><span class="topic-name">IT Security</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Access Control</h4>
+    <ul>
+      <li><strong>DAC (Discretionary Access Control):</strong> Owner decides who accesses</li>
+      <li><strong>MAC (Mandatory Access Control):</strong> System-enforced, based on classification (used in military/intelligence)</li>
+      <li><strong>RBAC (Role-Based Access Control):</strong> Access based on job role</li>
+      <li><strong>Least Privilege:</strong> Give users minimum access needed</li>
+    </ul>
+    <h4>Authentication Methods</h4>
+    <ul>
+      <li>Something you know: Password, PIN</li>
+      <li>Something you have: Smart card, OTP token</li>
+      <li>Something you are: Biometrics (fingerprint, iris)</li>
+      <li>MFA combines 2 or more of these</li>
+    </ul>
+    <h4>Security Policies</h4>
+    <ul>
+      <li>Password policy — minimum length, complexity, expiry</li>
+      <li>Data classification — Top Secret, Secret, Confidential, Public</li>
+      <li>Patch management — regularly update software to fix vulnerabilities</li>
+      <li>Backup policy — 3-2-1 Rule: 3 copies, 2 media types, 1 offsite</li>
+    </ul>
+    <h4>Indian Cyber Laws</h4>
+    <ul>
+      <li>Section 66 IT Act — hacking punishment (up to 3 years)</li>
+      <li>Section 66B — dishonestly receiving stolen computer resources</li>
+      <li>Section 43A — data protection for corporates</li>
+      <li>NCIIPC — National Critical Information Infrastructure Protection Centre (under NTRO)</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> MAC (Mandatory Access Control) is used in Indian defence and intelligence agencies — users cannot override system-set access levels.</div>
+    <div class="tag-row"><span class="tag">Access Control</span><span class="tag">MFA</span><span class="tag">Biometrics</span><span class="tag">Data Classification</span><span class="tag">IT Act 2000</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">10</span><span class="topic-name">Signal Processing</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Types of Signals</h4>
+    <ul>
+      <li><strong>Analog Signal:</strong> Continuous signal (e.g., sound waves, radio waves)</li>
+      <li><strong>Digital Signal:</strong> Discrete values — 0s and 1s</li>
+      <li><strong>ADC:</strong> Analog to Digital Converter | <strong>DAC:</strong> Digital to Analog Converter</li>
+    </ul>
+    <h4>Key Concepts</h4>
+    <ul>
+      <li><strong>Frequency:</strong> Number of cycles per second — measured in Hz</li>
+      <li><strong>Amplitude:</strong> Strength/height of the signal</li>
+      <li><strong>Sampling Rate:</strong> How often signal is sampled (CD quality = 44,100 Hz)</li>
+      <li><strong>Nyquist Theorem:</strong> Sampling rate must be at least 2× the signal frequency</li>
+      <li><strong>SNR (Signal-to-Noise Ratio):</strong> Higher is better — cleaner signal</li>
+    </ul>
+    <h4>Applications</h4>
+    <ul>
+      <li>Audio processing — noise cancellation, compression (MP3)</li>
+      <li>Image processing — JPEG compression, edge detection</li>
+      <li>Radar — detecting objects using reflected signals</li>
+      <li>SONAR — underwater detection using sound waves</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Fourier Transform converts time-domain signals into frequency domain — essential for signal analysis in intelligence applications.</div>
+    <div class="tag-row"><span class="tag">ADC/DAC</span><span class="tag">Nyquist</span><span class="tag">SNR</span><span class="tag">Radar/SONAR</span><span class="tag">Fourier</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">11</span><span class="topic-name">Hardware Knowledge</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Computer Hardware Components</h4>
+    <ul>
+      <li><strong>CPU (Processor):</strong> Brain of computer — executes instructions. Intel Core, AMD Ryzen</li>
+      <li><strong>RAM:</strong> Temporary memory — faster but volatile. DDR4, DDR5</li>
+      <li><strong>ROM:</strong> Permanent memory — stores firmware/BIOS</li>
+      <li><strong>HDD:</strong> Hard Disk Drive — magnetic, slower, more storage</li>
+      <li><strong>SSD:</strong> Solid State Drive — faster, no moving parts, more expensive</li>
+      <li><strong>GPU:</strong> Graphics Processing Unit — handles visual rendering</li>
+      <li><strong>Motherboard:</strong> Main circuit board connecting all components</li>
+      <li><strong>PSU:</strong> Power Supply Unit — converts AC to DC for components</li>
+    </ul>
+    <h4>Ports &amp; Interfaces</h4>
+    <ul>
+      <li>USB (2.0, 3.0, Type-C), HDMI, VGA, DisplayPort, Ethernet (RJ-45)</li>
+      <li>SATA – connects HDD/SSD internally | PCIe – connects GPU, NVMe SSD</li>
+    </ul>
+    <h4>Troubleshooting Hardware Issues</h4>
+    <ul>
+      <li>Blue Screen (BSOD) — driver conflict or hardware failure</li>
+      <li>No display — check GPU/RAM seating and monitor cable</li>
+      <li>Slow PC — check RAM usage, run disk cleanup, check for malware</li>
+      <li>Overheating — clean dust from fans, apply thermal paste to CPU</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> RAM is volatile memory — loses data when power is off. SSD is non-volatile — retains data without power.</div>
+    <div class="tag-row"><span class="tag">CPU/RAM</span><span class="tag">SSD vs HDD</span><span class="tag">Motherboard</span><span class="tag">Troubleshooting</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">12</span><span class="topic-name">Database Management – SQL Basics</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Essential SQL Commands</h4>
+    <div class="cmd-box"><span class="comment">-- View all records</span>
+SELECT * FROM employees;
+
+<span class="comment">-- View specific columns with condition</span>
+SELECT name, age FROM employees WHERE age > 25;
+
+<span class="comment">-- Sort results</span>
+SELECT * FROM employees ORDER BY age DESC;
+
+<span class="comment">-- Insert new record</span>
+INSERT INTO employees (id, name, age) VALUES (1, 'Rahul', 25);
+
+<span class="comment">-- Update existing record</span>
+UPDATE employees SET age = 26 WHERE id = 1;
+
+<span class="comment">-- Delete a record</span>
+DELETE FROM employees WHERE id = 1;
+
+<span class="comment">-- Count records</span>
+SELECT COUNT(*) FROM employees;
+
+<span class="comment">-- Join two tables</span>
+SELECT e.name, d.dept_name 
+FROM employees e 
+JOIN departments d ON e.dept_id = d.id;</div>
+    <h4>Key Concepts</h4>
+    <ul>
+      <li><strong>Primary Key:</strong> Unique identifier for each row. Cannot be NULL.</li>
+      <li><strong>Foreign Key:</strong> Links to primary key in another table</li>
+      <li><strong>ACID:</strong> Atomicity, Consistency, Isolation, Durability — ensures reliable transactions</li>
+      <li><strong>Normalization:</strong> 1NF (no repeating groups), 2NF (no partial dependency), 3NF (no transitive dependency)</li>
+      <li><strong>Index:</strong> Speeds up queries — like a book index</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> MySQL uses port 3306, PostgreSQL uses port 5432, Oracle uses port 1521, MS SQL Server uses port 1433.</div>
+    <div class="tag-row"><span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">ACID</span><span class="tag">Normalization</span><span class="tag">Joins</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">13</span><span class="topic-name">Digital Forensics</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Process: IPCAP</h4>
+    <ul>
+      <li><strong>I – Identification:</strong> Find potential sources of digital evidence</li>
+      <li><strong>P – Preservation:</strong> Create forensic image (bit-by-bit copy), no modification</li>
+      <li><strong>C – Collection:</strong> Collect evidence using forensically sound methods</li>
+      <li><strong>A – Analysis:</strong> Examine data for evidence</li>
+      <li><strong>P – Presentation:</strong> Document findings for legal use</li>
+    </ul>
+    <h4>Types of Digital Forensics</h4>
+    <ul>
+      <li><strong>Computer Forensics:</strong> Analyzing hard drives, OS, files</li>
+      <li><strong>Network Forensics:</strong> Analyzing network traffic logs</li>
+      <li><strong>Mobile Forensics:</strong> Extracting data from smartphones</li>
+      <li><strong>Cloud Forensics:</strong> Investigating data on cloud platforms</li>
+      <li><strong>Memory Forensics:</strong> Analyzing RAM dumps for running processes</li>
+    </ul>
+    <h4>Key Tools</h4>
+    <table class="tbl">
+      <tr><th>Tool</th><th>Use</th></tr>
+      <tr><td>Autopsy / Sleuth Kit</td><td>Disk analysis, file recovery, deleted files</td></tr>
+      <tr><td>Wireshark</td><td>Network packet capture and analysis</td></tr>
+      <tr><td>FTK (Forensic Toolkit)</td><td>Comprehensive forensic analysis</td></tr>
+      <tr><td>Volatility</td><td>Memory/RAM forensics — running processes</td></tr>
+      <tr><td>dd (Linux)</td><td>Creates bit-by-bit forensic disk image</td></tr>
+      <tr><td>EnCase</td><td>Commercial forensic suite (law enforcement)</td></tr>
+      <tr><td>Maltego</td><td>Link analysis, OSINT investigations</td></tr>
+    </table>
+    <h4>Important Concepts</h4>
+    <ul>
+      <li><strong>Chain of Custody:</strong> Document everyone who handled evidence. Essential for court admissibility.</li>
+      <li><strong>Write Blocker:</strong> Hardware device preventing writes to evidence drive</li>
+      <li><strong>Hash Verification:</strong> Calculate MD5/SHA-256 before and after — proves evidence not altered</li>
+      <li><strong>Steganography:</strong> Hiding data inside images, audio, video files</li>
+      <li><strong>Metadata:</strong> Data about data — file creation time, GPS location, author, camera model</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> The dd command in Linux: <code>dd if=/dev/sda of=disk_image.img bs=4096</code> creates a forensic image of /dev/sda drive. Always hash the image with sha256sum before and after.</div>
+    <div class="tag-row"><span class="tag">Chain of Custody</span><span class="tag">Autopsy</span><span class="tag">Wireshark</span><span class="tag">Metadata</span><span class="tag">Steganography</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">14</span><span class="topic-name">Quality Control</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Key QC Concepts</h4>
+    <ul>
+      <li><strong>QA vs QC:</strong> QA = Quality Assurance (process-focused, preventive); QC = Quality Control (product-focused, detective)</li>
+      <li><strong>Zero Defect:</strong> Producing output with no errors</li>
+      <li><strong>Benchmarking:</strong> Comparing against industry standards</li>
+      <li><strong>Audit:</strong> Systematic review of processes and outputs</li>
+    </ul>
+    <h4>QC in Technical/IT Context</h4>
+    <ul>
+      <li><strong>Testing types:</strong> Unit testing, Integration testing, System testing, UAT (User Acceptance Testing)</li>
+      <li><strong>Verification:</strong> Are we building the product right?</li>
+      <li><strong>Validation:</strong> Are we building the right product?</li>
+    </ul>
+    <h4>Quality Standards</h4>
+    <ul>
+      <li>ISO 9001 — Quality Management Systems</li>
+      <li>ISO 27001 — Information Security Management</li>
+      <li>CMMI — Capability Maturity Model Integration (software quality)</li>
+      <li>Six Sigma — Reduces defects to 3.4 per million opportunities</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> ISO 27001 is the international standard for information security — directly relevant to IB/intelligence organizations.</div>
+    <div class="tag-row"><span class="tag">QA vs QC</span><span class="tag">ISO 27001</span><span class="tag">Testing</span><span class="tag">Six Sigma</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">15</span><span class="topic-name">Technical Communication</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Principles of Effective Technical Writing</h4>
+    <ul>
+      <li><strong>Clarity:</strong> Use simple, direct language</li>
+      <li><strong>Accuracy:</strong> All facts and figures must be correct</li>
+      <li><strong>Conciseness:</strong> Say only what is necessary</li>
+      <li><strong>Audience awareness:</strong> Adjust detail level for technical vs non-technical readers</li>
+    </ul>
+    <h4>For IB JIO Context</h4>
+    <ul>
+      <li>Intelligence reports must be factual, unbiased, and concise</li>
+      <li>Use active voice: "The team identified the threat" not "The threat was identified"</li>
+      <li>Avoid speculation — clearly distinguish facts from assessments</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Intelligence reports follow the "Bottom Line Up Front" (BLUF) format — the key finding is stated first, details follow.</div>
+    <div class="tag-row"><span class="tag">Report Writing</span><span class="tag">BLUF</span><span class="tag">Clarity</span><span class="tag">Audience</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">16</span><span class="topic-name">Use of Tools and Equipment</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Diagnostic &amp; Network Tools</h4>
+    <ul>
+      <li><strong>ping:</strong> Tests connectivity to a host</li>
+      <li><strong>tracert/traceroute:</strong> Shows path packets take to destination</li>
+      <li><strong>ipconfig/ifconfig:</strong> Displays network configuration</li>
+      <li><strong>nslookup/dig:</strong> DNS lookup tool</li>
+      <li><strong>netstat:</strong> Shows active network connections and ports</li>
+      <li><strong>nmap:</strong> Network scanner — discovers hosts and services</li>
+    </ul>
+    <h4>Security Tools</h4>
+    <ul>
+      <li><strong>Wireshark:</strong> Packet analyzer — captures live network traffic</li>
+      <li><strong>Metasploit:</strong> Penetration testing framework</li>
+      <li><strong>Kali Linux:</strong> OS designed for ethical hacking and pentesting</li>
+      <li><strong>Burp Suite:</strong> Web application security testing</li>
+      <li><strong>John the Ripper / Hashcat:</strong> Password cracking tools</li>
+      <li><strong>Volatility:</strong> RAM/memory forensics</li>
+    </ul>
+    <h4>Physical/Lab Equipment</h4>
+    <ul>
+      <li>Multimeter — measures voltage, current, resistance</li>
+      <li>Oscilloscope — visualizes electronic signals</li>
+      <li>Cable tester — verifies network cable connections</li>
+      <li>Write Blocker — forensic hardware tool</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Nmap (Network Mapper) is a free, open-source tool widely used for network discovery and security auditing. Wireshark captures traffic but cannot decrypt HTTPS without keys.</div>
+    <div class="tag-row"><span class="tag">Wireshark</span><span class="tag">Nmap</span><span class="tag">ping/tracert</span><span class="tag">Kali Linux</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">17</span><span class="topic-name">Documentation &amp; Reporting</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Types of Reports</h4>
+    <ul>
+      <li><strong>Incident Report:</strong> What happened, when, impact, response</li>
+      <li><strong>Progress Report:</strong> Status of ongoing project/task</li>
+      <li><strong>Technical Report:</strong> Detailed technical findings</li>
+      <li><strong>Intelligence Report:</strong> Analysis of gathered intelligence</li>
+      <li><strong>Audit Report:</strong> Findings of a systematic review</li>
+    </ul>
+    <h4>Report Structure</h4>
+    <ul>
+      <li>Title, Date, Author, Classification Level</li>
+      <li>Executive Summary (key findings upfront — BLUF)</li>
+      <li>Objective / Background → Methodology → Findings → Recommendations → Conclusion</li>
+    </ul>
+    <h4>Log Management</h4>
+    <ul>
+      <li>System logs — record all system events, errors, logins</li>
+      <li>Security logs — track access attempts, policy changes</li>
+      <li>SIEM (Security Information and Event Management) — aggregates logs for monitoring</li>
+      <li>NTP (Network Time Protocol) — ensures all system clocks are synchronized</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> In security, logs are critical for forensic investigation. NTP ensures log timestamps are accurate and consistent across systems.</div>
+    <div class="tag-row"><span class="tag">Incident Report</span><span class="tag">SIEM</span><span class="tag">Log Analysis</span><span class="tag">Chain of Custody</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">18</span><span class="topic-name">Problem-Solving</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Problem-Solving Framework</h4>
+    <ul>
+      <li><strong>1. Define:</strong> What exactly is the problem?</li>
+      <li><strong>2. Gather:</strong> Collect relevant data and logs</li>
+      <li><strong>3. Root Cause:</strong> Why did the problem occur? (5 Whys technique)</li>
+      <li><strong>4. Solutions:</strong> List possible fixes, select best</li>
+      <li><strong>5. Implement:</strong> Apply solution step by step</li>
+      <li><strong>6. Verify:</strong> Confirm problem is resolved</li>
+      <li><strong>7. Document:</strong> Record what happened and how it was fixed</li>
+    </ul>
+    <h4>Logical Reasoning Tools</h4>
+    <ul>
+      <li>Flowcharts — visualize decision paths</li>
+      <li>Root Cause Analysis (RCA) — 5 Whys technique</li>
+      <li>Fishbone (Ishikawa) Diagram — identify causes of a problem</li>
+      <li>Decision Matrix — compare options systematically</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> The "5 Whys" technique — ask "why" 5 times to get to the root cause of any problem. Developed by Toyota, widely used in IT and security.</div>
+    <div class="tag-row"><span class="tag">Root Cause</span><span class="tag">5 Whys</span><span class="tag">Troubleshooting</span><span class="tag">Flowchart</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">19</span><span class="topic-name">Analytical Skills</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Intelligence Analysis Techniques</h4>
+    <ul>
+      <li><strong>Pattern Analysis:</strong> Identifying repeated behaviors or events</li>
+      <li><strong>Link Analysis:</strong> Mapping relationships between entities (used in criminal investigation)</li>
+      <li><strong>Timeline Analysis:</strong> Arranging events chronologically</li>
+      <li><strong>SWOT Analysis:</strong> Strengths, Weaknesses, Opportunities, Threats</li>
+      <li><strong>Traffic Analysis:</strong> Analyzing communication patterns without knowing content</li>
+    </ul>
+    <h4>Logical Reasoning Types</h4>
+    <ul>
+      <li><strong>Deductive:</strong> From general rule → specific conclusion (if A→B and B→C, then A→C)</li>
+      <li><strong>Inductive:</strong> From specific observations → general pattern</li>
+      <li><strong>Abductive:</strong> Best explanation for observed facts</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> Link Analysis is heavily used in intelligence — mapping connections between suspects, organizations, events using tools like Maltego or i2 Analyst's Notebook.</div>
+    <div class="tag-row"><span class="tag">Pattern Analysis</span><span class="tag">Link Analysis</span><span class="tag">SWOT</span><span class="tag">Reasoning</span></div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">20</span><span class="topic-name">Adaptability &amp; Emerging Technologies</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Emerging Technologies to Know</h4>
+    <ul>
+      <li><strong>Artificial Intelligence (AI) &amp; Machine Learning (ML):</strong> Used in threat detection, pattern recognition</li>
+      <li><strong>Blockchain:</strong> Distributed ledger — tamper-proof records</li>
+      <li><strong>IoT (Internet of Things):</strong> Connected devices — new attack surface</li>
+      <li><strong>Cloud Computing:</strong> AWS, Azure, GCP — understanding cloud security</li>
+      <li><strong>Quantum Computing:</strong> Future threat to current encryption standards</li>
+    </ul>
+    <h4>Continuous Learning</h4>
+    <ul>
+      <li>Industry certifications: CEH, CISSP, CompTIA Security+, CCNA</li>
+      <li>Stay updated: CVE database, CERT-In advisories, NIST guidelines</li>
+      <li>Practice: Capture The Flag (CTF) competitions, TryHackMe, HackTheBox</li>
+    </ul>
+    <div class="kp"><strong>📌 Key Fact:</strong> CERT-In (Indian Computer Emergency Response Team) is the national nodal agency under MeitY for handling cybersecurity incidents in India.</div>
+    <div class="tag-row"><span class="tag">AI/ML</span><span class="tag">IoT</span><span class="tag">Cloud</span><span class="tag">CERT-In</span><span class="tag">CEH/CISSP</span></div>
+  </div></div>
+</div>
+
+</div>
+
+<!-- ═══════════ SKILL TEST ═══════════ -->
+<div class="section" id="skill">
+<div class="sec-title">🛠 Skill Test – 10 Areas (Full Detail)</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">1</span><span class="topic-name">Technical Proficiency</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>What is Tested</h4>
+    <p>Your core technical knowledge relevant to the JIO role — computer systems, electronics, telecom, and specialized systems.</p>
+    <h4>How to Prepare</h4>
+    <ul>
+      <li>Study all 20 Technical Awareness topics in depth</li>
+      <li>Know current technology trends (5G, AI, IoT, Cloud)</li>
+      <li>Practice identifying and explaining technical concepts clearly</li>
+      <li>Know basic troubleshooting for common hardware/software issues</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> Focus on topics directly relevant to intelligence work — surveillance systems, communication networks, data security, digital forensics.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">2</span><span class="topic-name">Analytical Skills</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>What is Tested</h4>
+    <p>Ability to interpret technical data, logs, reports, and identify patterns or anomalies.</p>
+    <h4>Practice These</h4>
+    <ul>
+      <li>Reading network logs and identifying suspicious activity</li>
+      <li>Analyzing data tables and drawing correct conclusions</li>
+      <li>Identifying patterns in numerical/graphical data</li>
+      <li>Logical puzzles and reasoning questions</li>
+    </ul>
+    <h4>Sample Scenario</h4>
+    <p>You're given server logs showing multiple failed login attempts from different IPs at 3 AM. Analysis → likely brute force attack. Recommendation → block IPs, enable rate limiting, alert admin.</p>
+    <div class="kp"><strong>📌 Tip:</strong> Practice reading tabular data and drawing conclusions quickly. Accuracy + speed both matter.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">3</span><span class="topic-name">Problem-Solving</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Common Problem Types</h4>
+    <ul>
+      <li>Network connectivity issues (ping fails, DNS not resolving)</li>
+      <li>Security breach response (what to do when intrusion detected)</li>
+      <li>Hardware failure diagnosis</li>
+      <li>Software bug identification and fix</li>
+    </ul>
+    <h4>Framework to Use</h4>
+    <ul>
+      <li>1. Identify — What exactly is the problem?</li>
+      <li>2. Isolate — Where is the failure? (hardware/software/network)</li>
+      <li>3. Fix — Apply solution step by step</li>
+      <li>4. Verify — Confirm the fix works</li>
+      <li>5. Document — Record what you did</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> In answers, always show your systematic thinking — examiners want to see logical process, not just the final answer.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">4</span><span class="topic-name">Data Management</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Key Skills</h4>
+    <ul>
+      <li>Database operations — create, read, update, delete (CRUD)</li>
+      <li>Data backup and recovery procedures</li>
+      <li>Data classification — marking sensitivity levels correctly</li>
+      <li>Secure data disposal — degaussing, shredding, secure delete</li>
+      <li>Access control for sensitive data</li>
+      <li>Data integrity verification using checksums/hashes</li>
+    </ul>
+    <h4>Data Security in Intelligence Context</h4>
+    <ul>
+      <li>Need-to-know basis — only share with those who require it</li>
+      <li>Compartmentalization — keep different projects separate</li>
+      <li>Encryption at rest and in transit</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> Know the 3-2-1 backup rule and IT Act 2000 concepts for data protection in Indian context.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">5</span><span class="topic-name">Technical Documentation</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Must Know Formats</h4>
+    <ul>
+      <li>Incident Report format</li>
+      <li>SOP (Standard Operating Procedure) writing</li>
+      <li>Network diagram documentation</li>
+      <li>System specification document</li>
+    </ul>
+    <h4>Practice Exercise</h4>
+    <p>Write a 1-page incident report for: "A malware was detected on 3 workstations on 10 April 2026 at 14:30 IST. The malware encrypted local files. IT team isolated systems and ran antivirus. Systems restored from backup by 18:00 IST."</p>
+    <div class="kp"><strong>📌 Tip:</strong> Always include: What, When, Where, Who, Impact, Action Taken, and Recommendation. Use active voice — preferred in professional reports.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">6</span><span class="topic-name">Technical Communication</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Written Communication Tips</h4>
+    <ul>
+      <li>Use short sentences — max 20 words per sentence</li>
+      <li>One idea per paragraph</li>
+      <li>Use active voice: "The system detected malware" not "Malware was detected by the system"</li>
+      <li>Define technical terms when writing for non-technical audience</li>
+    </ul>
+    <h4>Verbal/Presentation Tips</h4>
+    <ul>
+      <li>Lead with key finding (Bottom Line Up Front — BLUF)</li>
+      <li>Use visual aids — diagrams, network maps</li>
+      <li>Anticipate questions — know your material deeply</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> In IB JIO Tier 2, you may be asked to write a technical brief or explain a concept. Practice writing 100-200 word technical explanations clearly.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">7</span><span class="topic-name">Use of Tools and Equipment</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Top Tools to Know (with Use)</h4>
+    <ul>
+      <li><strong>Wireshark:</strong> Capture and analyze network packets</li>
+      <li><strong>Nmap:</strong> Scan network for open ports and services</li>
+      <li><strong>Autopsy:</strong> Forensic analysis of disk images</li>
+      <li><strong>Metasploit:</strong> Penetration testing — exploit vulnerabilities</li>
+      <li><strong>ping/traceroute:</strong> Network diagnostics</li>
+      <li><strong>Burp Suite:</strong> Web application vulnerability testing</li>
+      <li><strong>Volatility:</strong> RAM/memory forensics</li>
+    </ul>
+    <h4>Physical Equipment</h4>
+    <ul>
+      <li>Multimeter — measure electrical values (V, A, Ω)</li>
+      <li>Network cable tester — test RJ-45 connections</li>
+      <li>Oscilloscope (CRO/DSO) — visualize waveforms</li>
+      <li>Write Blocker — forensic imaging of drives</li>
+      <li>Clamp Meter — measure current without breaking circuit</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> Know purpose, output, and limitations of each tool — not just the name. Wireshark captures traffic but cannot decrypt HTTPS without keys.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">8</span><span class="topic-name">Cybersecurity &amp; IT Security</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Priority for IB JIO</h4>
+    <p>This is the MOST IMPORTANT topic. Intelligence organizations deal with sensitive national security data — cybersecurity knowledge is critical.</p>
+    <h4>Incident Response Lifecycle</h4>
+    <ul>
+      <li>Preparation → Detection → Containment → Eradication → Recovery → Lessons Learned</li>
+    </ul>
+    <h4>Penetration Testing Phases</h4>
+    <ul>
+      <li>Reconnaissance → Scanning → Exploitation → Post-exploitation → Reporting</li>
+    </ul>
+    <h4>Indian Laws</h4>
+    <ul>
+      <li>IT Act 2000, IT Amendment Act 2008, CERT-In guidelines</li>
+      <li>Section 66 IT Act — hacking (up to 3 years) | Section 43A — data protection</li>
+      <li>NCIIPC — protects critical cyber infrastructure under NTRO</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> AES-256 is currently the gold standard for symmetric encryption — used by governments worldwide including India's intelligence agencies.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">9</span><span class="topic-name">Programming / Coding Skills</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>Python Must-Know</h4>
+    <ul>
+      <li>Read a file: open("file.txt","r").read()</li>
+      <li>List comprehension: [x*2 for x in range(5)]</li>
+      <li>Import libraries: import os, import re, import json</li>
+      <li>Regular expressions (re module) — pattern matching</li>
+      <li>Requests library — making HTTP calls</li>
+    </ul>
+    <h4>Common Coding Tasks in Intelligence</h4>
+    <ul>
+      <li>Parse log files to find failed login attempts</li>
+      <li>Extract specific data from JSON/XML files</li>
+      <li>Automate file renaming/organization</li>
+      <li>Send HTTP requests and analyze responses</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> Focus on Python — it's the most used language in cybersecurity and intelligence work. Know how to read and understand code even if you can't write it from scratch.</div>
+  </div></div>
+</div>
+
+<div class="topic-card">
+  <div class="topic-header" onclick="toggle(this)">
+    <div class="topic-header-left"><span class="topic-num">10</span><span class="topic-name">Quality Control</span></div>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="topic-body"><div class="cb">
+    <h4>In Technical Context</h4>
+    <ul>
+      <li>Verify outputs against expected results</li>
+      <li>Use checklists to ensure no steps are missed</li>
+      <li>Double-check all data entries, calculations, and report figures</li>
+      <li>Test before deploying — never push untested changes to production</li>
+    </ul>
+    <h4>QC in Security</h4>
+    <ul>
+      <li>Verify hash values after forensic imaging</li>
+      <li>Confirm firewall rules have no unintended gaps</li>
+      <li>Test backup restoration — "untested backup is not a backup"</li>
+      <li>Peer review of security policies and reports</li>
+    </ul>
+    <div class="kp"><strong>📌 Tip:</strong> In intelligence work, one small error (wrong IP, wrong date, wrong hash) can invalidate an entire investigation. Precision is non-negotiable.</div>
+  </div></div>
+</div>
+
+</div>
+
+<!-- ═══════════ QUIZ ═══════════ -->
+<div class="section" id="quiz">
+<div class="sec-title">🧠 Practice Quiz – 30 Questions</div>
+<div class="score-bar">
+  <span>Score</span>
+  <span class="score-val" id="scoreDisp">0 / 30</span>
+</div>
+<div id="qContainer"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bnav">
+  <button class="bnav-btn active" onclick="show('electronics',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+    Electronics
+  </button>
+  <button class="bnav-btn" onclick="show('commands',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+    Commands
+  </button>
+  <button class="bnav-btn" onclick="show('networking',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/><path d="M5 8v3a1 1 0 001 1h12a1 1 0 001-1V8M12 14v2"/></svg>
+    Networking
+  </button>
+  <button class="bnav-btn" onclick="show('technical',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+    Technical
+  </button>
+  <button class="bnav-btn" onclick="show('skill',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+    Skill Test
+  </button>
+  <button class="bnav-btn" onclick="show('quiz',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+    Quiz
+  </button>
+</div>
+
+<script>
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (el && el.classList.contains('tab-btn')) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  }
+  if (el && el.classList.contains('bnav-btn')) {
+    document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  }
+}
+
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.arrow');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.topic-body.open').forEach(b => {
+    b.classList.remove('open');
+    b.previousElementSibling.querySelector('.arrow').classList.remove('open');
+  });
+  if (!isOpen) { body.classList.add('open'); arrow.classList.add('open'); }
+}
+
+// ── COMBINED 30 QUESTIONS ──
+const QS = [
+  // Electronics questions (from complete file)
+  { q:"A fusible resistor's 5th (last) band is what color?", opts:["Gold","Silver","White","Black"], a:2, exp:"White is the unique 5th band on fusible resistors. It indicates the resistor acts as both a resistor AND a fuse — it burns open to protect the circuit from overcurrent." },
+  { q:"Which capacitor is POLARIZED and must be connected with correct polarity?", opts:["Ceramic Capacitor","Mica Capacitor","Electrolytic Capacitor","Film Capacitor"], a:2, exp:"Electrolytic capacitors are polarized — they have positive (+) and negative (−) terminals. Reversing polarity causes internal gas buildup and can burst the capacitor violently." },
+  { q:"A Schottky diode is preferred in SMPS because:", opts:["It has high forward voltage","It has NO reverse recovery time","It works only in reverse bias","It stores charge efficiently"], a:1, exp:"Schottky diodes have no reverse recovery time (no stored charge), so they can switch at very high frequencies (GHz range). This makes them ideal for SMPS, mobile chargers, and solar circuits." },
+  { q:"In JEDEC transistor numbering, what does '2N' mean?", opts:["2 transistors, N-type","2 PN junctions, N=semiconductor device","2 NPN transistors","2nd generation NPN"], a:1, exp:"JEDEC format: 2N = 2 PN junctions (transistor) + N = semiconductor device. 1N = diode (1 junction), 3N = dual gate FET. So 2N2222 is a BJT transistor." },
+  { q:"What does MLCC stand for in capacitors?", opts:["Metal Layer Ceramic Capacitor","Multilayer Ceramic Capacitor","Modular Low-loss Ceramic Capacitor","Micro Layer Coated Capacitor"], a:1, exp:"MLCC = Multilayer Ceramic Capacitor. It stacks many thin ceramic layers with alternating metal electrodes to achieve high capacitance in a very small package. Used in almost all modern electronics." },
+  { q:"Which logic gate is called the 'Universal Gate'?", opts:["AND","OR","NAND","XOR"], a:2, exp:"NAND (and NOR) are called Universal Gates because ALL other logic gates (AND, OR, NOT, XOR, etc.) can be built using only NAND gates. NAND is most commonly used in digital ICs." },
+  { q:"In Ohm's Law, if Voltage = 12V and Resistance = 4 Ohms, what is the Current?", opts:["48A","3A","8A","0.33A"], a:1, exp:"Ohm's Law: I = V/R = 12/4 = 3 Amperes. V = IR → I = V/R → 12/4 = 3A. Power would be P = V×I = 12×3 = 36 Watts." },
+  { q:"Total Internal Reflection in optical fiber requires light to travel from:", opts:["Rarer to denser medium","Denser to rarer medium at angle > critical angle","Any medium at any angle","Only through glass to air"], a:1, exp:"TIR occurs when light travels from denser medium (core/glass) to rarer medium (cladding/air) at an angle greater than the critical angle — completely reflecting light back inside the fiber." },
+  { q:"Which fiber connector is most common in modern SFP modules and data centers?", opts:["ST Connector","SC Connector","LC Connector","FC Connector"], a:2, exp:"LC (Lucent Connector) is the most widely used in modern data centers due to its small form factor and high port density. It's the standard connector for SFP and SFP+ transceivers." },
+  { q:"Never measure current with a multimeter in parallel because:", opts:["It will show wrong reading","It will blow the fuse/meter","Current cannot flow in parallel","It requires AC mode"], a:1, exp:"Measuring current in parallel creates a short circuit path — the meter blows its fuse or gets damaged. Current (ammeters) must ALWAYS be connected in SERIES with the circuit." },
+  // CMD questions
+  { q:"Which command in Windows CMD shows all active network connections and open ports?", opts:["ipconfig /all","netstat -an","tracert localhost","arp -a"], a:1, exp:"netstat -an shows all active connections and listening ports in numeric format. 'a' = all connections, 'n' = numeric (IP addresses instead of hostnames)." },
+  { q:"How do you create a new user 'Rahul' with password 'Admin123' in Windows CMD?", opts:["adduser Rahul Admin123","net user Rahul Admin123 /add","create user Rahul password Admin123","useradd Rahul Admin123"], a:1, exp:"net user NewUsername Password /add is the correct syntax to create a new Windows user from CMD. Must run CMD as Administrator." },
+  { q:"What does 'ipconfig /flushdns' do?", opts:["Releases the IP address","Clears the DNS resolver cache","Renews the IP from DHCP","Shows all DNS servers"], a:1, exp:"ipconfig /flushdns clears the local DNS cache. Useful when a website's IP has changed but your computer still remembers the old IP. After flushing, fresh DNS lookup occurs." },
+  { q:"What is the correct command to go up TWO directory levels in Windows CMD?", opts:["cd ..","cd \\\\..\\\\..", "cd ..\\\\..", "cd ../../"], a:2, exp:"cd ..\\\\ goes up one level, cd ..\\\\..\\\\ goes up two levels in Windows CMD. In Linux, you would use cd ../.. (forward slash)." },
+  { q:"The 'echo' command with '>>' operator does what?", opts:["Creates a new file","Deletes the file","Appends text to an existing file","Displays file contents"], a:2, exp:"'>' overwrites the file (or creates new). '>>' appends to the file without deleting existing content. Example: echo NewLine >> file.txt adds 'NewLine' at the end of file.txt." },
+  // Networking/Theory questions
+  { q:"What does CIA Triad stand for in Cybersecurity?", opts:["Confidentiality, Integrity, Availability","Central Intelligence Agency","Classified Information Access","Communication Integrity Analysis"], a:0, exp:"CIA Triad is the foundation of cybersecurity: Confidentiality (protect from unauthorized access), Integrity (data not tampered), Availability (accessible when needed)." },
+  { q:"Which networking device operates at OSI Layer 1 and broadcasts all data to all ports?", opts:["Switch","Router","Hub","Bridge"], a:2, exp:"A hub operates at OSI Layer 1 (Physical Layer). It has no intelligence — it receives data on one port and sends it out ALL other ports. This creates excessive traffic and collisions." },
+  { q:"Which type of attack intercepts communication between two parties without their knowledge?", opts:["Phishing","DDoS Attack","Man-in-the-Middle (MITM)","SQL Injection"], a:2, exp:"MITM attack: Attacker secretly intercepts and possibly modifies communication between two parties who believe they are communicating directly." },
+  { q:"Which encryption algorithm is asymmetric (uses public + private key pair)?", opts:["AES","DES","RSA","MD5"], a:2, exp:"RSA is asymmetric encryption — uses public key to encrypt, private key to decrypt. AES and DES are symmetric (same key). MD5 is a hash function." },
+  { q:"What is steganography?", opts:["A type of firewall","Hiding secret data within ordinary files/media","A network scanning technique","A type of malware"], a:1, exp:"Steganography hides secret information inside images, audio, video, or text files without detection. Used in intelligence operations." },
+  { q:"Which OSI layer handles routing of packets between different networks?", opts:["Data Link Layer (Layer 2)","Transport Layer (Layer 4)","Network Layer (Layer 3)","Session Layer (Layer 5)"], a:2, exp:"Layer 3 – Network Layer handles logical addressing (IP) and routing. Routers work at this layer." },
+  { q:"What is a 'zero-day' vulnerability?", opts:["A vulnerability patched on day zero","Unknown vulnerability with no available patch","A DDoS attack lasting zero days","A virus that activates at midnight"], a:1, exp:"Zero-day vulnerability is a security flaw unknown to the software vendor — no patch exists. Attackers exploit it immediately ('zero days' for the vendor to respond)." },
+  { q:"In digital forensics, what is 'chain of custody'?", opts:["A encryption technique","A network protocol chain","A documented record of everyone who handled evidence","A type of firewall rule chain"], a:2, exp:"Chain of custody ensures that evidence is properly tracked from collection to court. Every person who handles evidence must be recorded to ensure legal admissibility." },
+  { q:"Which Python data structure is used to store key-value pairs?", opts:["List","Tuple","Set","Dictionary"], a:3, exp:"Dictionary stores data as key-value pairs: {'name':'Rahul','age':25}. Lists store ordered items, Tuples are immutable, Sets store unique unordered items." },
+  { q:"What does ACID stand for in database management?", opts:["Atomicity, Consistency, Isolation, Durability","Access, Control, Integrity, Data","Automatic, Concurrent, Integrated, Dynamic","Atomicity, Concurrency, Index, Durability"], a:0, exp:"ACID properties ensure reliable database transactions: Atomicity (all or nothing), Consistency (valid state), Isolation (transactions independent), Durability (committed data persists)." },
+  { q:"What does the Nyquist Theorem state in signal processing?", opts:["Signal strength must exceed noise","Sampling rate must be at least 2× the signal frequency","All signals must be digital","Frequency cannot exceed 1 GHz"], a:1, exp:"Nyquist Theorem: To accurately reconstruct a signal, the sampling rate must be at least twice the maximum signal frequency (e.g., audio at 20 kHz needs 40 kHz+ sampling rate)." },
+  { q:"Which Indian law governs cybercrime and computer-related offences?", opts:["Indian Penal Code 1860","IT Act 2000","TRAI Act 1997","Digital India Act 2023"], a:1, exp:"The Information Technology Act 2000 (IT Act 2000), amended in 2008, is the primary Indian law governing cybercrime, data protection, and electronic transactions. Section 66 covers hacking." },
+  { q:"Which tool is used for memory forensics — analyzing RAM dumps?", opts:["Wireshark","Autopsy","Volatility","Nmap"], a:2, exp:"Volatility is an open-source memory forensics framework used to analyze RAM dumps — extract running processes, network connections, passwords from memory." },
+  { q:"What is the full form of DHCP in networking?", opts:["Dynamic Host Configuration Protocol","Data Host Control Program","Direct Host Communication Protocol","Dynamic Hub Control Protocol"], a:0, exp:"DHCP automatically assigns IP addresses and network settings (gateway, DNS) to devices in a network. Ports 67 (server) and 68 (client)." },
+  { q:"Which frequency band is used for satellite communication and 5G?", opts:["LF (Low Frequency)","VLF (Very Low Frequency)","Microwave (above 1 GHz)","HF (High Frequency)"], a:2, exp:"Microwave frequencies (above 1 GHz) are used for satellite communication and 5G networks. Higher frequency = more bandwidth but shorter range." }
+];
+
+let score = 0;
+function buildQuiz() {
+  const c = document.getElementById('qContainer');
+  c.innerHTML = '';
+  QS.forEach((q,i) => {
+    const card = document.createElement('div');
+    card.className = 'qcard';
+    card.innerHTML = `
+      <div class="qnum">Q${i+1} of ${QS.length}</div>
+      <div class="qtext">${q.q}</div>
+      ${q.opts.map((o,j)=>`<button class="opt" onclick="ans(this,${j},${q.a},${i})">${o}</button>`).join('')}
+      <div class="exp-box" id="e${i}">${q.exp}</div>
+    `;
+    c.appendChild(card);
+  });
+}
+function ans(btn,chosen,correct,idx){
+  const btns=btn.parentElement.querySelectorAll('.opt');
+  btns.forEach((b,j)=>{ b.disabled=true; if(j===correct) b.classList.add('correct'); else if(j===chosen) b.classList.add('wrong'); });
+  document.getElementById('e'+idx).classList.add('show');
+  if(chosen===correct) score++;
+  document.getElementById('scoreDisp').textContent=`${score} / ${QS.length}`;
+}
+buildQuiz();
+</script>
+</body>
+</html>
