@@ -2088,3 +2088,30 @@ buildQuiz();
 </script>
 </body>
 </html>
+<script>
+function show(sectionId, btn) {
+  // सभी sections hide
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+  });
+
+  // selected section दिखाओ
+  document.getElementById(sectionId).classList.add('active');
+
+  // सभी buttons inactive
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active');
+  });
+
+  // clicked button active
+  btn.classList.add('active');
+}
+
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.arrow');
+
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+</script>
